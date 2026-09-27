@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon-croco.jpg">
+<title>Plan de contenu · Lacoste</title>
+<meta name="description" content="Plan de contenu TOFU, MOFU, BOFU et modèle PESO pour Lacoste. R5.MDEE.13, IUT de Roubaix.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+<style>
+/* Design System : .claude/skills/slides-design/ds.html, copie locale dans ds.html */
+:root{
+  --encre:#0a0a0a; --fond:#f5f5f5; --carte:#fff; --filet:#e4e4e2;
+  --bleu:#1d9bf0; --vert:#008000; --rouge:#ff0000;
+  --sourdine:rgba(10,10,10,.55); --tenu:rgba(10,10,10,.38);
+  --fs-titre:clamp(1.9rem,3.9vw,3.3rem);
+  --fs-chiffre:clamp(22px,2.34vw,2.1rem);
+  --fs-md:clamp(14px,1.09vw,1.05rem);
+  --fs-sm:clamp(11px,.94vw,.84rem);
+  --sans:"Plus Jakarta Sans",system-ui,sans-serif;
+  --r:20px; --rail:6vh;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);font-size:var(--fs-md);font-weight:400;line-height:1.5;
+  color:var(--encre);background:var(--fond);scroll-snap-type:y mandatory;overflow-x:hidden}
+img{max-width:none}
+
+/* rail de sommaire, repris du deck X */
+.rail{position:fixed;left:0;top:0;bottom:0;width:var(--rail);background:var(--carte);
+  border-right:1px solid var(--filet);display:flex;flex-direction:column;align-items:center;
+  padding:1.4vh 0;gap:.6vh;z-index:50}
+.rail .mark{width:4.9vh;height:auto;margin:.6vh 0 .4vh;flex:0 0 auto;display:block}
+/* liens du rail : petits widgets à bords arrondis, répartis sur toute la hauteur (demande de Sofian, 12/09) */
+.rail .liens{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;padding:.8vh 0}
+.rail .liens a{width:3.6vh;height:3.6vh;display:grid;place-items:center;border-radius:1.1vh;background:var(--fond);border:1px solid var(--filet);
+  font-size:var(--fs-sm);font-weight:600;color:var(--sourdine);text-decoration:none;transition:.18s}
+.rail .liens a:hover{background:#e9e9e6;color:var(--encre)}
+.rail .liens a.on{color:#fff;background:var(--encre);border-color:var(--encre)}
+.rail .bar{margin-top:0;width:.8vh;height:9vh;background:var(--filet);border-radius:2px;overflow:hidden}
+.rail .bar i{display:block;width:100%;background:var(--bleu);height:0}
+
+section{height:100vh;height:100svh;scroll-snap-align:start;scroll-snap-stop:always;
+  padding:10vh 2.6vw 6.5vh calc(var(--rail) + 2.6vw);display:flex;flex-direction:column;
+  justify-content:center;border-top:1px solid var(--filet);position:relative;overflow:hidden}
+section:first-of-type{border-top:0}
+section.haut{justify-content:flex-start}
+.wrap{width:100%;max-width:1500px;margin:0 auto}
+.num{position:absolute;bottom:2.6vh;right:2.6vw;font-size:var(--fs-sm);font-weight:600;
+  letter-spacing:.16em;color:var(--tenu);z-index:3}
+h1,h2{font-size:var(--fs-titre);font-weight:600;letter-spacing:-.035em;line-height:1.04;margin:0 0 .5em}
+.sub{color:var(--sourdine);margin:0 0 1.2em;max-width:74ch}
+strong{font-weight:600}
+.gris{color:var(--tenu)}
+.pied{position:absolute;bottom:2.6vh;left:calc(var(--rail) + 2.6vw);right:10vw;font-size:var(--fs-sm);
+  font-weight:300;color:var(--tenu);z-index:3;margin:0}
+.pied .ia{height:1.1em;vertical-align:-.18em;margin:0 .25em 0 .1em}
+
+/* logos sur chaque slide : Lacoste en haut à gauche (tel quel, coins arrondis), IUT en haut à droite, petit */
+.lg-l{position:absolute;top:2.3vh;left:calc(var(--rail) + 2.6vw);height:4.8vh;width:auto;z-index:6;display:block}
+.lg-i{position:absolute;top:2.9vh;right:2.6vw;height:3vh;width:auto;z-index:6;display:block}
+#s1 .lg-i{background:#fff;border-radius:8px;padding:.5vh .8vh;height:4vh}
+/* les 4 réseaux de l'oral : logos en file, le réseau courant en couleur */
+.rs-suite{position:absolute;top:2.5vh;right:calc(2.6vw + 19vh);display:flex;gap:1vh;align-items:center;z-index:6}
+.rs-suite img{width:3.6vh;height:3.6vh;border-radius:8px;display:block;filter:grayscale(1);opacity:.3;background:#fff}
+.rs-suite img.on{filter:none;opacity:1;box-shadow:0 0 0 2px var(--fond),0 0 0 3.5px var(--encre)}
+
+/* chips à bord fin et boutons */
+.chip{display:inline-flex;align-items:center;border-radius:999px;padding:.3em .85em;font-size:var(--fs-sm);
+  font-weight:600;background:var(--carte);color:var(--encre);border:1px solid rgba(10,10,10,.28);white-space:nowrap}
+.chip.on{background:var(--encre);color:#fff;border-color:var(--encre)}
+.chip-vert{background:#006900;color:#fff;border-color:#006900} /* vert du DS assombri (≈ -18 %), demandé par Sofian le 12/09 */
+.chip-blanc{background:none;color:#fff;border-color:rgba(255,255,255,.85)}
+.chips{display:flex;flex-wrap:wrap;gap:.45em}
+.rond{display:inline-grid;place-items:center;width:2.2em;height:2.2em;border-radius:50%;flex:none;
+  border:1.5px solid var(--encre);font-size:var(--fs-md);font-weight:600;line-height:1}
+.rond.plein{background:var(--encre);color:#fff}
+.rond.blanc{background:#fff;color:var(--encre);border-color:#fff}
+.btn{display:inline-flex;align-items:center;gap:.8em;border-radius:999px;padding:.35em .4em .35em 1.2em;
+  font-size:var(--fs-sm);font-weight:700;background:var(--encre);color:#fff;white-space:nowrap}
+.btn .rond{width:1.9em;height:1.9em;background:#fff;color:var(--encre);border-color:#fff;font-size:var(--fs-sm)}
+.btn-line{background:none;color:var(--encre);border:1.5px solid var(--encre);padding:.55em 1.3em;
+  text-transform:uppercase;letter-spacing:.06em}
+
+/* habillages de chiffres */
+.stat-plain b{display:block;font-size:clamp(2.2rem,4.2vw,3.8rem);font-weight:600;letter-spacing:-.03em;line-height:1}
+.stat-plain span{display:block;font-size:var(--fs-sm);font-weight:600;color:var(--sourdine);margin-top:.35em}
+.stat-block,.stat-vert,.stat-bleu{border-radius:var(--r);padding:1.1em 1.3em;color:#fff}
+.stat-block{background:var(--encre)} .stat-vert{background:var(--vert)} .stat-bleu{background:var(--bleu)}
+.stat-block b,.stat-vert b,.stat-bleu b{display:block;font-size:var(--fs-chiffre);font-weight:600;letter-spacing:-.03em;line-height:1}
+.stat-block span,.stat-vert span,.stat-bleu span{display:block;margin-top:.45em;font-size:var(--fs-sm);font-weight:600;color:rgba(255,255,255,.78)}
+
+/* ============ S1 · COUVERTURE ============ */
+#s1{background:var(--encre);color:#fff;border-top:0;padding:0}
+#s1 .fond{position:absolute;inset:0;overflow:hidden}
+#s1 .fond img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+#s1 .voile{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.40) 0%,rgba(10,10,10,.50) 55%,rgba(10,10,10,.86) 100%)}
+.tw{position:absolute;left:var(--x);top:var(--y);width:var(--l,86%);transform:translate(-50%,-50%);margin:0;z-index:2;text-align:center}
+#s1 h1{font-size:clamp(2.8rem,6.6vw,6rem);font-weight:600;letter-spacing:-.04em;line-height:1.02;margin:0}
+/* description : sa propre taille, plus grande que les deux lignes de signature (demande de Sofian, 14/09) */
+#s1 .sub{position:absolute;left:50%;top:100%;width:min(58ch,76vw);transform:translateX(-50%);margin:2.6vh 0 0;
+  color:#e4e9eb;font-size:clamp(17px,1.62vw,1.5rem);font-weight:400;line-height:1.4;text-align:center;max-width:none}
+#s1 .mention{font-size:var(--fs-sm);font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:#8ecdf7}
+#s1 .meta{font-size:var(--fs-sm);font-weight:300;color:rgba(255,255,255,.66);letter-spacing:.04em}
+#s1 .num{color:rgba(255,255,255,.55)}
+
+
+/* ============ S2 · PERSONA (fiche : photo-carte à gauche, fiche à droite) ============ */
+#s2 .wrap{flex:1;min-height:0;display:flex;flex-direction:column}
+.pers{flex:1;min-height:0;display:grid;grid-template-columns:30fr 70fr;gap:2.4vw;align-items:stretch}
+.pers-photo{position:relative;border-radius:var(--r);overflow:hidden;min-height:0;background:#e9e9e6}
+.pers-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.pers-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.72) 100%)}
+.pers-photo .cap{position:absolute;left:1.1em;right:1.1em;bottom:1.1em;color:#fff;z-index:2;font-size:var(--fs-md);font-style:italic;line-height:1.35}
+.pers-fiche{display:grid;grid-template-columns:1.05fr 1fr;grid-template-rows:auto 1fr;gap:1.6vh 2.4vw;min-height:0}
+.pers-id{grid-column:1 / -1;display:flex;align-items:flex-end;justify-content:space-between;gap:2vw;border-bottom:1px solid var(--filet);padding-bottom:1.4vh}
+.pers-id .nom{font-size:clamp(2.2rem,4.2vw,3.7rem);font-weight:600;letter-spacing:-.04em;line-height:1;margin:0}
+.pers-id .nom span{color:var(--tenu);font-weight:500}
+.pers-id .role{font-size:var(--fs-md);color:var(--sourdine);margin:.5em 0 0}
+.attrs{width:100%;border-collapse:collapse;margin:0}
+.attrs td{padding:.55em .6em .55em 0;border-bottom:1px solid var(--filet);vertical-align:top}
+.attrs td:first-child{color:var(--sourdine);width:8.5em;font-weight:600;font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:.08em;padding-top:.75em}
+.attrs tr:last-child td{border-bottom:0}
+.bl{font-size:var(--fs-sm);font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--sourdine);margin:0 0 .7em}
+.jauge{display:grid;grid-template-columns:auto 1fr auto;gap:.7em;align-items:center;margin:.55em 0}
+.jauge img{width:1.6em;height:1.6em;border-radius:6px;display:block}
+.pts{display:flex;gap:.5vh}
+.pts i{width:1.2vh;height:1.2vh;border-radius:50%;background:var(--filet);display:block}
+.pts i.on{background:var(--encre)}
+.parcours{list-style:none;margin:0;padding:0;counter-reset:pc}
+.parcours li{counter-increment:pc;display:grid;grid-template-columns:auto 1fr auto;gap:.7em;align-items:center;padding:.5em 0;border-bottom:1px solid var(--filet)}
+.parcours li:last-child{border-bottom:0}
+.parcours li::before{content:counter(pc);display:grid;place-items:center;width:1.8em;height:1.8em;border-radius:50%;background:var(--encre);color:#fff;font-size:var(--fs-sm);font-weight:600}
+.etage{font-size:var(--fs-sm);font-weight:600;border:1px solid rgba(10,10,10,.28);border-radius:999px;padding:.15em .7em;white-space:nowrap}
+
+/* ============ S3 à S5 · TABLEAUX DU FUNNEL (70 % tableau, 30 % exemple, exemple en alternance) ============ */
+.fun-sec .wrap{flex:1;min-height:0;display:flex;flex-direction:column}
+.tete{display:flex;align-items:flex-end;justify-content:space-between;gap:2vw;margin-bottom:2.2vh}
+.tete h2{margin:0}
+.tete h2 .gris{color:var(--tenu)}
+.budget{text-align:right;flex:none}
+.budget b{display:block;font-size:var(--fs-chiffre);font-weight:600;letter-spacing:-.03em;line-height:1}
+.budget span{display:block;font-size:var(--fs-sm);font-weight:600;color:var(--sourdine);margin-top:.35em}
+.plan{flex:1;min-height:0;display:grid;grid-template-columns:30fr 70fr;gap:2vw;align-items:stretch}
+.plan.inv{grid-template-columns:70fr 30fr}
+.ex{min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
+.tab{background:var(--carte);border:1px solid var(--filet);border-radius:var(--r);overflow:hidden;min-height:0;display:flex}
+table.fun{width:100%;height:100%;border-collapse:collapse;table-layout:fixed}
+table.fun th,table.fun td{padding:.7vh .75vw;text-align:left;vertical-align:middle;border-bottom:1px solid var(--filet);line-height:1.3}
+table.fun tr:last-child td{border-bottom:0}
+table.fun td+td,table.fun th+th{border-left:1px solid var(--filet)}
+table.fun col.lab{width:8.2vw}
+table.fun td.lab{font-size:var(--fs-sm);font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--sourdine);background:var(--fond)}
+table.fun thead th{background:var(--encre);color:#fff;font-weight:600;font-size:var(--fs-md);vertical-align:top;padding-top:1.2vh;padding-bottom:1.2vh}
+table.fun thead th.lab{background:var(--encre)}
+table.fun thead th small{display:block;margin-top:.35em;font-size:var(--fs-sm);font-weight:400;color:rgba(255,255,255,.66)}
+table.fun td{font-size:var(--fs-md)}
+table.fun td .k{display:block;font-size:var(--fs-sm);color:var(--sourdine);margin-top:.25em}
+/* PESO : un badge opaque par type, même couleur sur toutes les slides */
+.peso{display:inline-block;border-radius:999px;padding:.28em .9em;font-size:var(--fs-sm);font-weight:700;letter-spacing:.08em;color:#fff}
+.p-paid{background:var(--bleu)} .p-owned{background:#006900} .p-shared{background:var(--encre)}
+/* exemple TOFU : l'affiche, en photo-carte */
+.affiche{height:100%;max-height:100%;aspect-ratio:2/3;border-radius:var(--r);overflow:hidden;position:relative}
+.affiche img{width:100%;height:100%;object-fit:cover;display:block}
+.ex .chip{position:absolute;top:1.2vh;left:1.2vh;z-index:3}
+.ex-in{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+/* exemple MOFU : la vidéo du défi dans un écran TikTok */
+.tel{position:relative;height:100%;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:#000;cursor:pointer}
+.tel video{width:100%;height:100%;object-fit:cover;display:block}
+.tt-ui{position:absolute;inset:0;pointer-events:none;color:#fff;z-index:2}
+.tt-ui .haut-x{position:absolute;top:1.4vh;left:0;right:0;text-align:center;font-size:var(--fs-sm);font-weight:600;letter-spacing:.02em;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.tt-ui .haut-x span{opacity:.6;margin-right:1em}
+.tt-ui .bas{position:absolute;left:1.1vh;right:5.8vh;bottom:1.6vh;font-size:var(--fs-sm);line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.tt-ui .bas b{display:block;font-size:var(--fs-md);margin-bottom:.2em}
+.tt-ui .cote{position:absolute;right:1vh;bottom:9vh;display:flex;flex-direction:column;gap:2.2vh;align-items:center}
+.tt-ui .cote svg{width:3.4vh;height:3.4vh;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+.tt-ui .cote .av{width:4.2vh;height:4.2vh;border-radius:50%;border:2px solid #fff;overflow:hidden;background:#fff}
+.tt-ui .cote .av img{width:100%;height:100%;object-fit:cover;display:block}
+.lire{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:7vh;height:7vh;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;z-index:3;transition:opacity .2s}
+.lire svg{width:2.6vh;height:2.6vh;margin-left:.4vh}
+.tel.lecture .lire{opacity:0}
+/* exemple BOFU : la fenêtre de sortie montée sur une vraie capture mobile de lacoste.com */
+.tel.site{background:#fff;cursor:default}
+.tel.site>img{width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block}
+.voile-s{position:absolute;inset:0;background:rgba(10,10,10,.52);z-index:1}
+.sortie{position:absolute;left:0;right:0;bottom:0;z-index:2;background:#fff;border-radius:16px 16px 0 0;padding:1.8vh 1.6vh 2vh;text-align:center}
+.sortie .ferme{position:absolute;top:1.1vh;right:1.3vh;font-size:1.6vh;color:var(--sourdine)}
+.sortie .av{width:8vh;height:8vh;border-radius:50%;overflow:hidden;margin:-6vh auto .8vh;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.sortie .av img{width:100%;height:100%;object-fit:cover;display:block}
+.sortie b{display:block;font-size:clamp(14px,1.25vw,1.2rem);letter-spacing:-.01em}
+.sortie p{margin:.4vh 0 1.2vh;font-size:clamp(11px,.86vw,.84rem);color:var(--sourdine);line-height:1.35}
+.sortie .ok{display:flex;align-items:center;justify-content:center;gap:.45em;font-size:clamp(11px,.86vw,.84rem);font-weight:600;color:var(--vert);margin-bottom:1.3vh}
+.sortie .ok svg{width:1.6vh;height:1.6vh}
+.sortie .b1,.sortie .b2{display:block;border-radius:999px;padding:.95vh 0;font-size:clamp(11px,.86vw,.84rem);font-weight:600;margin-top:.8vh}
+.sortie .b1{background:var(--encre);color:#fff}
+.sortie .b2{border:1px solid var(--encre);color:var(--encre)}
+
+
+/* ============ RETOURS DE SOFIAN DU 26/09 (version 2) ============ */
+/* couleurs PESO demandées par Sofian : owned bleu, paid orange, shared violet (5 couleurs au total avec vert et rouge) */
+:root{--orange:#f57c00;--violet:#7b3fe4}
+.p-owned{background:var(--bleu)} .p-paid{background:var(--orange)} .p-shared{background:var(--violet)}
+/* rail en verre liquide (réf. navbar de Balls Kingdom) : flottant, transparent, flou léger, numéros resserrés, jauge plus épaisse */
+.rail{top:1.4vh;bottom:1.4vh;left:.9vh;border-radius:2.6vh;border:1px solid rgba(10,10,10,.08);
+  background:color-mix(in srgb,#fff 55%,transparent);-webkit-backdrop-filter:blur(8px) saturate(1.3);backdrop-filter:blur(8px) saturate(1.3);
+  box-shadow:inset 1px 1px 1px rgba(255,255,255,.6),0 8px 30px rgba(10,10,10,.12)}
+.rail .liens{flex:0 0 auto;justify-content:center;gap:1.6vh;margin:auto 0}
+.rail .liens a{background:rgba(255,255,255,.55)}
+.rail .bar{width:1.3vh;height:13vh;border-radius:999px;background:rgba(10,10,10,.14)}
+.rail .bar i{border-radius:999px}
+section{padding-left:calc(var(--rail) + .9vh + 2.6vw)}
+.lg-l,.pied{left:calc(var(--rail) + .9vh + 2.6vw)}
+/* slide 2 : moodboard plus large, intertitres plus visibles, parties plus espacées */
+.pers{grid-template-columns:36fr 64fr}
+.pers-photo img{object-position:50% 50%}
+.pers-photo::after,.pers-photo .cap{display:none}
+.pers-fiche{row-gap:0}
+.bl{font-size:var(--fs-md);font-weight:700;color:var(--encre);letter-spacing:.1em;margin:0 0 .8em}
+.pers-bloc+.pers-bloc{margin-top:2.8vh}
+.pers-id .cit{font-size:var(--fs-md);font-style:italic;color:var(--sourdine);max-width:34ch;text-align:right;margin:0;line-height:1.35}
+/* tableaux : ligne Objectif, cases plus grandes, titres et colonne Action centrés, pilules centrées */
+table.fun th,table.fun td{padding:1vh 1vw}
+table.fun thead th{vertical-align:middle;text-align:center}
+table.fun td.lab{text-align:center}
+table.fun td.c{text-align:center}
+table.fun ul{margin:0;padding-left:1.1em}
+table.fun ul li{margin:.1em 0}
+table.fun ul li b{font-weight:600}
+.tete{margin-bottom:1.6vh}
+/* slide 5 : la vidéo laisse une marge blanche au-dessus pour la pilule */
+.ex-in.marge{flex-direction:column;justify-content:flex-start;gap:1.4vh}
+.ex-in.marge .chip{position:static}
+.ex-in.marge .tel{height:auto;flex:1;min-height:0}
+.tel.site{cursor:pointer;aspect-ratio:390/844}
+.tel.site video{width:100%;height:100%;object-fit:cover;display:block}
+
+
+/* ============ RETOURS DE SOFIAN DU 26/09 (version 3) ============ */
+.rail{-webkit-backdrop-filter:blur(4px) saturate(1.25);backdrop-filter:blur(4px) saturate(1.25)}
+.rail .mark{width:3.6vh;margin:1.2vh 0 .4vh}
+.rail .bar{width:2vh;height:15vh}
+/* slide 2 : les 5 images du moodboard, chacune dans son cadre réglable (T, puis Alt+glisser pour recentrer) */
+.pers-photo{background:none;display:grid;grid-template-columns:2.35fr 1fr;grid-template-rows:repeat(4,minmax(0,1fr));gap:.7vw;overflow:visible}
+.pers-photo .ph{position:relative;border-radius:var(--r);overflow:hidden;min-height:0;background:#e9e9e6}
+.pers-photo .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.pers-photo .ph.grand{grid-row:1 / 5}
+.etage.e-tofu{background:var(--bleu);border-color:var(--bleu);color:#fff}
+.etage.e-mofu{background:var(--orange);border-color:var(--orange);color:#fff}
+.etage.e-bofu{background:#006900;border-color:#006900;color:#fff}
+.pers-bloc.bas{margin-top:4vh}
+#s2 .parcours li{padding:.38em 0}
+/* rappel de la couleur de l'étage dans le titre des slides 3 à 5 */
+#s3 .tete h2 .f{color:var(--bleu)} #s4 .tete h2 .f{color:var(--orange)} #s5 .tete h2 .f{color:#006900}
+/* tableaux : ligne Objectif centrée, logo du réseau dans l'en-tête */
+table.fun tbody tr:first-child td:not(.lab){text-align:center}
+table.fun thead th small .rs{display:inline-flex;gap:.3em;vertical-align:-.3em;margin-right:.4em}
+table.fun thead th small .rs img{height:1.45em;width:1.45em;border-radius:5px;display:block;object-fit:contain;background:#fff}
+
+
+/* ============ RETOURS DE SOFIAN DU 26/09 (version 4) ============ */
+.rail{background:color-mix(in srgb,#fff 28%,transparent);-webkit-backdrop-filter:blur(1.5px) saturate(1.15);backdrop-filter:blur(1.5px) saturate(1.15)}
+.rail .liens a{background:rgba(255,255,255,.62)}
+table.fun thead th small .rs img.cr{padding:.1em .24em;box-sizing:border-box}
+.tel.visuel{cursor:default}
+.tel.visuel img{width:100%;height:100%;object-fit:cover;display:block}
+
+
+/* ============ CARROUSEL DES 3 CONTENUS PAR ÉTAGE (26/09) ============ */
+.ex.car{display:flex;flex-direction:column;align-items:stretch;justify-content:stretch;gap:1.2vh;min-height:0;min-width:0}
+.car-track{flex:1;min-height:0;position:relative;container-type:size}
+.car-it{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s}
+.car-it.on{opacity:1;visibility:visible}
+.car-it video{cursor:pointer}
+.fr{position:relative;width:min(100cqw,calc(100cqh * var(--ar)));aspect-ratio:var(--ar);border-radius:var(--r);overflow:hidden;background:#111}
+.fr>img,.fr>video{width:100%;height:100%;object-fit:cover;display:block}
+.fr .chip{position:absolute;top:1.2vh;left:1.2vh;z-index:4}
+.car-nav{display:flex;align-items:center;justify-content:center;gap:1.2vw}
+.car-nav button.rond{width:2.1em;height:2.1em;font-size:var(--fs-md)}
+.car-dots{display:flex;gap:.6vh}
+.car-dots i{width:1.1vh;height:1.1vh;border-radius:50%;background:rgba(10,10,10,.2);display:block;cursor:pointer}
+.car-dots i.on{background:var(--encre)}
+/* carrousel Instagram : les 5 visuels défilent seuls */
+.igc>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.igc>img:first-of-type{opacity:1}
+.igc .pts5{position:absolute;bottom:1.4vh;left:0;right:0;display:flex;justify-content:center;gap:.5vh;z-index:3}
+.igc .pts5 i{width:.9vh;height:.9vh;border-radius:50%;background:rgba(255,255,255,.55);display:block}
+@media (prefers-reduced-motion:no-preference){
+  .igc>img{animation:igc 12.5s infinite}
+  .igc>img:first-of-type{opacity:0}
+  .igc>img:nth-of-type(2){animation-delay:2.5s} .igc>img:nth-of-type(3){animation-delay:5s}
+  .igc>img:nth-of-type(4){animation-delay:7.5s} .igc>img:nth-of-type(5){animation-delay:10s}
+  .igc .pts5 i{animation:igcp 12.5s infinite}
+  .igc .pts5 i:nth-child(2){animation-delay:2.5s} .igc .pts5 i:nth-child(3){animation-delay:5s}
+  .igc .pts5 i:nth-child(4){animation-delay:7.5s} .igc .pts5 i:nth-child(5){animation-delay:10s}
+}
+@keyframes igc{0%{opacity:0}3%,20%{opacity:1}23%,100%{opacity:0}}
+@keyframes igcp{0%,1%{background:rgba(255,255,255,.55)}3%,20%{background:#fff}23%,100%{background:rgba(255,255,255,.55)}}
+/* pub Instagram sponsorisée : en-tête et barre d'action */
+.ad-top{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;gap:.6em;padding:5.4vh 1.2vh 3vh;color:#fff;font-size:var(--fs-sm);background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0))}
+.ad-top img{width:2.8vh;height:2.8vh;border-radius:50%;background:#fff;padding:.3vh;box-sizing:border-box}
+.ad-top b{font-weight:600} .ad-top span{opacity:.8}
+.ad-cta{position:absolute;left:1.2vh;right:1.2vh;bottom:1.4vh;z-index:3;display:flex;justify-content:space-between;align-items:center;background:#fff;color:var(--encre);border-radius:10px;padding:1.1vh 1.2vh;font-size:var(--fs-sm);font-weight:600}
+@media print{.car-it{transition:none}.car-nav{visibility:hidden}.igc>img{animation:none!important}.igc>img:first-of-type{opacity:1!important}}
+
+
+/* flèches reprises de Balls Kingdom (.fleche-grande) : rond en verre, chevron fin (26/09) */
+.car-nav .fleche{width:5.6vh;height:5.6vh;border-radius:999px;border:1px solid rgba(26,26,26,.14);background:color-mix(in srgb,#fff 72%,transparent);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);box-shadow:0 4px 14px rgba(26,26,26,.16);color:rgba(26,26,26,.62);
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:color .2s,border-color .2s}
+.car-nav .fleche:hover{color:#1a1a1a;border-color:#1a1a1a}
+.car-nav .fleche svg{width:100%;height:100%;display:block}
+
+
+/* légende du contenu : hors de l'image, en texte simple sous l'écran (26/09) */
+.fr .chip{display:none}
+.fr{box-shadow:0 0 0 1px rgba(10,10,10,.12),0 6px 18px rgba(10,10,10,.08)}
+.car-cap{text-align:center;font-size:var(--fs-md);font-weight:600;line-height:1.2;min-height:1.2em;margin:0}
+
+/* notes orateur, touche N */
+.notes{display:none;position:fixed;left:var(--rail);right:0;bottom:0;background:var(--encre);
+  color:#fff;padding:1.6vh 4vw;font-size:var(--fs-sm);line-height:1.55;max-height:34vh;overflow:auto;z-index:40}
+body.notesvues section.ici .notes{display:block}
+/* notes modifiables en direct (14/09) : clic pour écrire, Échap pour sortir, C pour copier */
+.notes{cursor:text;outline:0;white-space:pre-line}
+.notes:focus{box-shadow:inset 0 3px 0 var(--bleu)}
+.notes::after{content:attr(data-aide);display:block;margin-top:.7em;font-size:11px;color:rgba(255,255,255,.45);user-select:none}
+.toast{position:fixed;left:50%;bottom:3vh;transform:translateX(-50%);background:var(--bleu);color:#fff;border-radius:999px;padding:.5em 1.2em;font-size:13px;font-weight:600;z-index:95;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:1}
+
+/* ---------- mode réglage : touche T ---------- */
+body.reglage [data-tw]{outline:1px dashed rgba(29,155,240,.75);outline-offset:1px;cursor:grab}
+body.reglage [data-tw]:hover{outline:1.5px solid var(--bleu)}
+body.reglage [data-tw].vise{outline:2.5px solid var(--bleu)}
+.panneau{display:none;position:fixed;right:16px;top:16px;z-index:90;max-height:78vh;overflow:auto;
+  background:var(--encre);color:#e4e9eb;border:1px solid rgba(255,255,255,.18);border-radius:16px;
+  padding:12px 16px;font-size:12px;font-weight:300;line-height:1.6;width:360px}
+.panneau.gauche{right:auto;left:calc(var(--rail) + 16px)}
+body.reglage .panneau{display:block}
+.panneau b{font-weight:600;color:#fff}
+.panneau .l{display:flex;justify-content:space-between;gap:14px;font-family:ui-monospace,Menlo,monospace;cursor:pointer;padding:1px 4px;border-radius:6px}
+.panneau .l:hover{background:rgba(255,255,255,.08)}
+.panneau .l span:last-child{text-align:right;color:rgba(255,255,255,.62)}
+.panneau .l.vise{color:#7fcbff;background:rgba(29,155,240,.16)}
+.panneau .outils-r{margin:8px 0;padding:8px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;gap:5px}
+.panneau .outils-r > div{display:flex;align-items:center;flex-wrap:wrap;gap:5px}
+.panneau .outils-r span{min-width:92px;color:rgba(255,255,255,.7)}
+.panneau button{font:inherit;font-size:12px;font-weight:600;background:#232323;color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:2px 9px;cursor:pointer}
+.panneau button:hover{border-color:var(--bleu)}
+.panneau button.on{background:var(--bleu);border-color:var(--bleu)}
+.panneau .aide{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.62)}
+
+@media print{
+  @page{size:1280px 720px;margin:0}
+  :root{--rail:0px}
+  .notes,.rail,.panneau,.lire{display:none!important}
+  html,body{scroll-snap-type:none}
+  section{break-inside:avoid;page-break-after:always}
+  section:last-of-type{page-break-after:auto}
+  [data-tw]{outline:0!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<nav class="rail" aria-label="Sommaire">
+  <a href="#s1"><img class="mark" src="../assets/croco.png" alt="Lacoste, aller à la première diapo"></a>
+  <div class="liens">
+  <a href="#s1" class="on">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a>
+  </div>
+  <div class="bar"><i></i></div>
+</nav>
+<div class="panneau" id="panneau"></div>
+
+<!-- ============ S1 · COUVERTURE (structure du deck X : titre centré en x et en y, signature en bas) ============ -->
+<section id="s1">
+  <div class="fond" data-tw="image de fond"><img src="../assets/cover-niney-clean.jpg" alt="Campagne Lacoste Play Big avec Pierre Niney" style="object-position:50% 50%"></div>
+  <div class="voile" data-tw="voile" data-op></div>
+  <div class="tw" data-tw="titre" style="--x:50%;--y:45%;--l:84%">
+    <h1>Engager la communauté Lacoste</h1>
+    <p class="sub" data-tw="description">Comment Lacoste peut-elle engager sa communauté sur les réseaux sociaux sans dépendre uniquement de ses ambassadeurs ?</p>
+  </div>
+  <p class="mention tw" data-tw="mention" style="--x:50%;--y:93.4%;--l:86%">R5.MDEE.13 · Stratégie social media &amp; e-CRM · M. Igor Perez</p>
+  <p class="meta tw" data-tw="auteurs" style="--x:50%;--y:96.2%;--l:86%">Romane Da Silva &amp; Sofian Chtioui · BUT3 MDEE · IUT de Roubaix · 1er octobre 2026</p>
+  <div class="num">1 / 5</div>
+  <div class="notes">Bonjour tout le monde, j'espère que vous allez bien.
+Pour cette dernière présentation, on repart de Lacoste, là où on s'était arrêtés. Notre audit avait montré une marque très suivie, mais dont l'engagement repose surtout sur ses ambassadeurs : sans eux, sur Instagram, on retombe à 0,19 % d'engagement.
+D'où notre problématique : comment Lacoste peut-elle engager sa communauté sur les réseaux sociaux sans dépendre uniquement de ses ambassadeurs ?
+Pour y répondre, on vous présente d'abord la personne qu'on veut toucher. Ensuite, notre plan de contenu, étage par étage du funnel : le TOFU, le MOFU et le BOFU. Et pour chaque action, on vous précise son type dans le modèle PESO : paid, earned, owned ou shared.</div>
+</section>
+
+<!-- ============ S2 · PERSONA (réf. « texte / grande carte » de Velocity Club, inversé : moodboard à gauche, fiche à droite) ============ -->
+<section id="s2">
+  <div class="wrap">
+    <h2 data-tw="titre">Personae</h2>
+    <div class="pers">
+      <div class="pers-photo"><div class="ph grand" data-tw="photo 1"><img src="../assets/persona-p1.jpg" alt="Claire en polo crème et pull vert"></div><div class="ph" data-tw="photo 2"><img src="../assets/persona-p2.jpg" style="object-position:72% 50%" alt="Détail du polo"></div><div class="ph" data-tw="photo 3"><img src="../assets/persona-p3.jpg" alt="Raquette et balles de tennis"></div><div class="ph" data-tw="photo 4"><img src="../assets/persona-p4.jpg" style="object-position:50% 22%" alt="Claire en blazer vert"></div><div class="ph" data-tw="photo 5"><img src="../assets/persona-p5.jpg" alt="Crocodile Lacoste"></div></div>
+      <div class="pers-fiche">
+        <div class="pers-id" data-tw="identité">
+          <div><p class="nom">Claire, <span>37 ans</span></p><p class="role">Cadre en marketing et communication · Lyon</p></div>
+          <p class="cit">«&nbsp;Des vêtements élégants et de qualité, que je peux porter longtemps, sans sacrifier mon confort.&nbsp;»</p>
+        </div>
+        <div data-tw="colonne gauche" style="padding-top:2.6vh">
+          <div class="pers-bloc">
+            <p class="bl">Profil</p>
+            <table class="attrs">
+              <tr><td>Situation</td><td>En couple, mère d'un enfant</td></tr>
+              <tr><td>Budget</td><td>Confortable</td></tr>
+              <tr><td>Style</td><td>Élégant, casual chic, intemporel</td></tr>
+              <tr><td>Attentes</td><td>Qualité, durabilité, confort</td></tr>
+              <tr><td>Freins</td><td>Prix, collections trop classiques, peu de contenus pour les femmes</td></tr>
+            </table>
+          </div>
+          <div class="pers-bloc">
+            <p class="bl">Réseaux sociaux</p>
+            <div class="jauge"><img src="../assets/logo-instagram.svg" alt=""><span>Instagram</span><span class="pts"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+            <div class="jauge"><img src="../assets/logo-pinterest.svg" alt=""><span>Pinterest</span><span class="pts"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+            <div class="jauge"><img src="../assets/logo-tiktok.svg" alt=""><span>TikTok</span><span class="pts"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+          </div>
+        </div>
+        <div data-tw="colonne droite" style="padding-top:2.6vh">
+          <div class="pers-bloc">
+            <p class="bl">Son parcours d'achat</p>
+            <ol class="parcours">
+              <li><span>Découvre une collection sur Instagram</span><span class="etage e-tofu">TOFU</span></li>
+              <li><span>Visite lacoste.com</span><span class="etage e-mofu">MOFU</span></li>
+              <li><span>Compare les produits</span><span class="etage e-mofu">MOFU</span></li>
+              <li><span>Achète en ligne ou en boutique</span><span class="etage e-mofu">MOFU</span></li>
+              <li><span>Partage, recommande</span><span class="etage e-bofu">BOFU</span></li>
+            </ol>
+          </div>
+          <div class="pers-bloc bas">
+            <p class="bl">Objectif pour Lacoste</p>
+            <p style="margin:0">Fidéliser la clientèle féminine adulte, au-delà du tennis</p>
+          </div>
+          <div class="pers-bloc bas">
+            <p class="bl">Contenus qui l'intéressent</p>
+            <p style="margin:0">Idées de looks, collections femme, coulisses et savoir-faire</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="pied">Source : fiche persona réalisée par Romane Da Silva avec <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5.</p>
+  <div class="num">2 / 5</div>
+  <div class="notes">Voici Claire, 37 ans, cadre en marketing à Lyon. Pourquoi elle ? Notre audit a montré que Lacoste parle surtout aux hommes. Sur Pinterest par exemple, son plus gros tableau s'appelle Menswear, alors que l'audience française du réseau est majoritairement féminine. Claire, c'est la cliente qu'on veut aller chercher.
+Elle connaît Lacoste depuis longtemps et elle aime les pièces de qualité, qui durent. Mais elle a des freins : le prix, des collections qu'elle trouve parfois trop classiques, et peu de contenus pensés pour les femmes de son âge.
+Regardez son parcours d'achat : il suit exactement les trois étages du funnel. Elle découvre une collection sur Instagram, c'est le TOFU. Elle va sur le site, compare, puis achète : c'est le MOFU. Et si elle est contente, elle partage : c'est le BOFU.
+La fiche a été réalisée par Romane avec GPT Image 2.5. Toutes les actions qui suivent sont pensées pour Claire, avec un budget de 10 000 euros par jour. On commence par le haut du funnel.</div>
+</section>
+
+<!-- ============ S3 · TOFU (exemple à gauche, 30 % ; tableau à droite, 70 %) ============ -->
+<section id="s3" class="fun-sec">
+  <div class="wrap">
+    <div class="tete"><h2 data-tw="titre"><span class="f">TOFU</span> <span class="gris">: se faire découvrir</span></h2><div class="budget" data-tw="budget"><b>6&nbsp;500&nbsp;€/jour</b><span>65 % du budget de 10&nbsp;000&nbsp;€/jour</span></div></div>
+    <div class="plan">
+      <div class="ex car" data-tw="exemple"><div class="car-track"><figure class="car-it"><div class="fr" style="--ar:390/844"><img src="../assets/mq-tofu-post.png" alt=""><span class="chip">Reveal de la mascotte</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><video class="clip" src="../assets/mq-tofu-reel.mp4" poster="../assets/mq-tofu-reel-poster.jpg" muted loop autoplay playsinline preload="auto"></video><span class="chip">Reel « Comment naît un polo »</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><img src="../assets/mq-tofu-pin.png" alt=""><span class="chip">Épingle Pinterest femme</span></div></figure></div><p class="car-cap"></p><div class="car-nav"><button class="fleche car-p" aria-label="Précédent"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M21 10l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="car-dots"></span><button class="fleche car-n" aria-label="Suivant"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M15 10l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+      <div class="tab" data-tw="tableau">
+        <table class="fun">
+          <colgroup><col class="lab"><col><col><col><col></colgroup>
+          <thead><tr><th class="lab">Action</th><th>Reels sponsorisés<small>Instagram</small></th><th>In-Feed Ads<small>TikTok</small></th><th>Épingles sponsorisées<small>Pinterest</small></th><th>Reveal de la mascotte<small>Instagram et TikTok</small></th></tr></thead>
+          <tbody>
+            <tr><td class="lab">Objectif</td><td>Notoriété</td><td>Notoriété</td><td>Notoriété</td><td>Notoriété</td></tr>
+            <tr><td class="lab">Type PESO</td><td class="c"><span class="peso p-paid">PAID</span></td><td class="c"><span class="peso p-paid">PAID</span></td><td class="c"><span class="peso p-paid">PAID</span></td><td class="c"><span class="peso p-owned">OWNED</span></td></tr>
+            <tr><td class="lab">Format &amp; durée</td><td><ul><li>9:16 vertical</li><li>15 à 30&nbsp;s</li></ul></td><td><ul><li>9:16, court et tendance</li><li>15&nbsp;s</li></ul></td><td><ul><li>Image ou vidéo 2:3</li><li>Campagne de 30 jours</li></ul></td><td><ul><li>9:16 vertical</li><li>15 à 20&nbsp;s</li></ul></td></tr>
+            <tr><td class="lab">Message clé</td><td>«&nbsp;Comment naît un polo Lacoste&nbsp;»</td><td>«&nbsp;Le style n'a pas d'espèce&nbsp;»</td><td>«&nbsp;Le vestiaire tennis au féminin&nbsp;»</td><td>«&nbsp;Présentation de la mascotte&nbsp;»</td></tr>
+            <tr><td class="lab">Coût &amp; KPI</td><td>3&nbsp;000&nbsp;€/jour<span class="k">Impressions, nouveaux profils</span></td><td>2&nbsp;500&nbsp;€/jour, ≈&nbsp;9&nbsp;€ CPM<span class="k">Vues, nouveaux abonnés</span></td><td>1&nbsp;000&nbsp;€/jour<span class="k">Impressions, enregistrements</span></td><td>0&nbsp;€<span class="k">Vues, reprises par des tiers</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <p class="pied">Sources : Igor Perez, support des séances 6 et 7 (slides 109, 116, 130, 142) ; visuels : Romane Da Silva avec <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5, et <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini.</p>
+  <div class="num">3 / 5</div>
+  <div class="notes">Premier étage, le TOFU, pour top of funnel. Le but : faire découvrir Lacoste à des gens qui ne la suivent pas encore. C'est là qu'on met l'essentiel du budget, 6 500 euros par jour sur 10 000, parce qu'il faut du volume.
+Une question pour vous : si on veut toucher beaucoup de monde nouveau, vite, est-ce qu'on peut compter uniquement sur des publications gratuites ? Pas vraiment : sans achat média, rien ne garantit qu'on sera vu. C'est pour ça que trois de nos quatre actions sont du paid media.
+Sur Instagram, des Reels sponsorisés qui racontent comment naît un polo. Vous nous avez montré que les Reels sont en haut du parcours d'achat Instagram, pour 5 à 6 euros les mille impressions.
+Sur TikTok, des In-Feed Ads dans le fil « Pour toi », à environ 9 euros les mille vues. On n'a pas pris le TopView : il demande plus de 40 000 euros par jour pour un lancement, soit quatre fois notre budget.
+Sur Pinterest, des épingles sponsorisées pour les femmes. C'est le réseau le moins cher de votre support, entre 10 centimes et 1,50 dollar par action, et c'est celui de Claire.
+La quatrième action est de l'owned media : la mascotte que vous voyez à gauche, publiée gratuitement sur les comptes de la marque. Reels et TikTok montrent aussi les vidéos aux non-abonnés, donc un bon contenu peut circuler sans budget. Et ce personnage répond à notre problématique : il porte la marque à la place des ambassadeurs, sans contrat.
+À gauche, nos trois contenus pour cet étage : l'affiche de la mascotte, le Reel qui montre la fabrication du polo, et l'épingle Pinterest pour les femmes. Un mot sur l'IA : la mascotte a été générée par Romane avec GPT Image 2.5, le Reel et l'épingle avec Gemini. L'image porte d'ailleurs une signature invisible, qui prouve qu'elle vient d'OpenAI. Mais il faut rester prudent : sur le visuel du défi, à la slide suivante, on voit un faux compte, « lacroco_official », et de faux chiffres de likes. Une image générée peut afficher des statistiques qui n'existent pas, on ne doit jamais les présenter comme réelles.</div>
+</section>
+
+<!-- ============ S4 · MOFU (tableau à gauche, 70 % ; exemple à droite, 30 %) ============ -->
+<section id="s4" class="fun-sec">
+  <div class="wrap">
+    <div class="tete"><h2 data-tw="titre"><span class="f">MOFU</span> <span class="gris">: convaincre et convertir</span></h2><div class="budget" data-tw="budget"><b>3&nbsp;500&nbsp;€/jour</b><span>35 % du budget, + 2&nbsp;000&nbsp;€ de dotation</span></div></div>
+    <div class="plan inv">
+      <div class="tab" data-tw="tableau">
+        <table class="fun">
+          <colgroup><col class="lab"><col><col><col><col></colgroup>
+          <thead><tr><th class="lab">Action</th><th>Carrousel savoir-faire<small>Instagram</small></th><th>Défi #CrocodileVibes<small>TikTok</small></th><th>Collection Ads femme<small>Pinterest</small></th><th>Pub «&nbsp;Ajouter au panier&nbsp;»<small>Instagram</small></th></tr></thead>
+          <tbody>
+            <tr><td class="lab">Objectif</td><td>Intérêt</td><td>Interaction</td><td>Intérêt</td><td>Conversion</td></tr>
+            <tr><td class="lab">Type PESO</td><td class="c"><span class="peso p-owned">OWNED</span></td><td class="c"><span class="peso p-shared">SHARED</span></td><td class="c"><span class="peso p-paid">PAID</span></td><td class="c"><span class="peso p-paid">PAID</span></td></tr>
+            <tr><td class="lab">Format &amp; durée</td><td><ul><li>5 visuels 4:5</li><li>Épinglé 30 jours</li></ul></td><td><ul><li>Vidéos 9:16</li><li>3 semaines</li></ul></td><td><ul><li>Vidéo et 4 produits</li><li>30 jours</li></ul></td><td><ul><li>Collection 9:16</li><li>30 jours</li></ul></td></tr>
+            <tr><td class="lab">Message clé</td><td>«&nbsp;Du coton au crocodile&nbsp;»</td><td>«&nbsp;Montre-nous ton crocodile&nbsp;»</td><td>«&nbsp;Composez votre tenue&nbsp;»</td><td>«&nbsp;Votre polo vous attend&nbsp;»</td></tr>
+            <tr><td class="lab">Coût &amp; KPI</td><td>0&nbsp;€<span class="k">Enregistrements, partages</span></td><td>2&nbsp;000&nbsp;€ de dotation<span class="k">Vidéos hors ambassadeurs</span></td><td>1&nbsp;000&nbsp;€/jour<span class="k">Clics produit, enregistrements</span></td><td>2&nbsp;500&nbsp;€/jour<span class="k">Transformation, coût par achat</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ex car" data-tw="exemple"><div class="car-track"><figure class="car-it"><div class="fr" style="--ar:390/844"><video class="clip" src="../assets/mq-mofu-tiktok.mp4" poster="../assets/mq-mofu-tiktok-poster.jpg" muted loop autoplay playsinline preload="auto"></video><span class="chip">Défi #CrocodileVibes</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><video class="clip" src="../assets/mq-mofu-carrousel.mp4" poster="../assets/mq-mofu-carrousel-poster.png" muted loop autoplay playsinline preload="auto"></video><span class="chip">Carrousel « Du coton au crocodile »</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><img src="../assets/mq-mofu-pub.png" alt=""><span class="chip">Pub « Ajouter au panier »</span></div></figure></div><p class="car-cap"></p><div class="car-nav"><button class="fleche car-p" aria-label="Précédent"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M21 10l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="car-dots"></span><button class="fleche car-n" aria-label="Suivant"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M15 10l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+    </div>
+  </div>
+  <p class="pied">Sources : Igor Perez, supports des séances 5 (slide 95), 6 et 7 (slides 119, 131, 142, 143) ; visuels : Romane Da Silva avec <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5, et <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini.</p>
+  <div class="num">4 / 5</div>
+  <div class="notes">Deuxième étage, le MOFU. La personne connaît maintenant la marque : il faut la convaincre, puis la faire acheter. Dans votre matrice, cet étage s'appelle d'ailleurs « considération et conversion ». On y met les 3 500 euros par jour qui restent.
+Ici, on utilise trois types du modèle PESO.
+En owned, un carrousel épinglé en haut du profil Instagram, « Du coton au crocodile », la suite du Reel du TOFU. Pas besoin de payer : les curieux qu'on a attirés arrivent sur le profil, et c'est la première chose qu'ils voient. Et un carrousel, on le fait défiler, donc on prend le temps de s'intéresser.
+En shared, le défi #CrocodileVibes, que vous voyez à droite. La mascotte lance le défi, et ce sont les internautes qui créent les vidéos. Ce n'est pas de l'earned, parce que la participation est provoquée par la marque. C'est l'action qui répond le plus directement à notre problématique : la communauté prend le relais des ambassadeurs. D'où notre indicateur : la part des vidéos publiées par des personnes qui ne sont pas ambassadrices. La seule dépense, c'est une dotation ponctuelle de vingt polos personnalisés, 2 000 euros.
+Ensuite, deux actions en paid, en retargeting, c'est-à-dire qu'on ne vise que les personnes qui ont déjà réagi. Sur Pinterest, une Collection Ads pour les femmes qui ont enregistré nos épingles. Et sur Instagram, une pub avec un bouton « Ajouter au panier » qui ouvre directement le site dans l'application, panier déjà rempli. Une Story gratuite ne suffirait pas : elle n'est montrée qu'aux abonnés, et ces personnes ne suivent souvent pas le compte. Moins d'étapes, donc moins d'abandons.
+À droite, nos trois contenus pour cet étage : la vidéo du défi, où la mascotte lance elle-même le défi à la communauté (un clic pour le son), réalisée par Romane, le carrousel « Du coton au crocodile » et la pub « Ajouter au panier », tous deux générés avec Gemini.</div>
+</section>
+
+<!-- ============ S5 · BOFU (exemple à gauche, 30 % ; tableau à droite, 70 %) ============ -->
+<section id="s5" class="fun-sec">
+  <div class="wrap">
+    <div class="tete"><h2 data-tw="titre"><span class="f">BOFU</span> <span class="gris">: faire racheter et recommander</span></h2><div class="budget" data-tw="budget"><b>0&nbsp;€ de média</b><span>Améliorations du site, owned media</span></div></div>
+    <div class="plan">
+      <div class="ex car" data-tw="exemple"><div class="car-track"><figure class="car-it"><div class="fr" style="--ar:390/844"><video class="clip" src="../assets/sortie-popup.mp4" poster="../assets/sortie-poster.png" muted loop autoplay playsinline preload="auto"></video><span class="chip">Fenêtre de sortie</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><img src="../assets/mq-bofu-avis.png" alt=""><span class="chip">Avis avec photos clients</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><img src="../assets/mq-bofu-members.png" alt=""><span class="chip">Jauge Lacoste Members</span></div></figure></div><p class="car-cap"></p><div class="car-nav"><button class="fleche car-p" aria-label="Précédent"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M21 10l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="car-dots"></span><button class="fleche car-n" aria-label="Suivant"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M15 10l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+      <div class="tab" data-tw="tableau">
+        <table class="fun">
+          <colgroup><col class="lab"><col><col><col><col></colgroup>
+          <thead><tr><th class="lab">Action</th><th>Achat express<br>«&nbsp;Ma taille&nbsp;»<small>lacoste.com</small></th><th>Fenêtre de sortie<small>lacoste.com</small></th><th>Avis avec photos<small>lacoste.com</small></th><th>Jauge Lacoste Members<small>Espace Members</small></th></tr></thead>
+          <tbody>
+            <tr><td class="lab">Objectif</td><td>Réachat</td><td>Conversion</td><td>Preuve sociale</td><td>Fidélisation</td></tr>
+            <tr><td class="lab">Type PESO</td><td class="c"><span class="peso p-owned">OWNED</span></td><td class="c"><span class="peso p-owned">OWNED</span></td><td class="c"><span class="peso p-shared">SHARED</span></td><td class="c"><span class="peso p-owned">OWNED</span></td></tr>
+            <tr><td class="lab">Format &amp; durée</td><td><ul><li>Bouton sur la vignette</li><li>Permanent</li></ul></td><td><ul><li>Fenêtre au départ de la page</li><li>Panier gardé 48&nbsp;h</li></ul></td><td><ul><li>Photos clients, «&nbsp;Acheter ce look&nbsp;»</li><li>Permanent</li></ul></td><td><ul><li>Jauge à paliers et points</li><li>Permanent</li></ul></td></tr>
+            <tr><td class="lab">Message clé</td><td>«&nbsp;Votre taille, en un clic&nbsp;»</td><td>«&nbsp;Tu pars déjà ?&nbsp;»</td><td>«&nbsp;Portés par vous&nbsp;»</td><td>«&nbsp;Votre crocodile grandit avec vous&nbsp;»</td></tr>
+            <tr><td class="lab">Coût &amp; KPI</td><td>0&nbsp;€<span class="k">Réachat, clics jusqu'au panier</span></td><td>0&nbsp;€, sans remise<span class="k">Abandons, paniers récupérés</span></td><td>0&nbsp;€<span class="k">Photos publiées, conversion</span></td><td>0&nbsp;€, cadeaux existants<span class="k">Membres actifs, parrainages</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <p class="pied">Sources : lacoste.com, polo L.12.D et page Lacoste Members (consulté le 26/09/2026) ; Igor Perez, support de la séance 5 (slides 93, 96) ; visuels avec <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini ; audit avec <img class="ia" src="../assets/logo-claude.svg" alt="">Claude.</p>
+  <div class="num">5 / 5</div>
+  <div class="notes">Dernier étage, le BOFU : faire racheter et faire recommander. Vous nous aviez dit en cours qu'on pouvait aussi travailler le site, parce que c'est de l'owned media. On est donc allés sur lacoste.com pour voir ce qui existe déjà et ce qui manque. Ici, aucun achat média : tout le budget est déjà utilisé plus haut.
+Le site est déjà bien fait : on peut acheter depuis la page liste, il y a des avis clients et un programme de fidélité, Lacoste Members. Mais il manque quatre choses.
+Un : la taille n'est jamais mémorisée. On propose un bouton « Ajouter en 36 » directement sur la vignette, un clic au lieu de trois.
+Deux : rien ne retient quelqu'un qui quitte son panier. À gauche, notre maquette animée, montée sur une vraie capture du site : la mascotte revient, sans remise, pour garder l'image premium. Avec les flèches, vous verrez aussi les deux autres contenus de cet étage, les avis avec photos et la jauge Members, générés avec Gemini.
+Trois : les 424 avis de ce polo sont uniquement en texte. On ajoute les photos des clients, et c'est du shared : ce sont eux qui créent le contenu.
+Et quatre : Lacoste Members ne récompense pas le partage, et ses cadeaux sont tirés au sort. On ajoute une jauge visible, avec des points pour les posts et le parrainage. Pour mesurer, chaque client a un code de parrainage unique, validé après le délai de retour de 30 jours.
+Pour cet audit, on s'est aidés de Claude. Il nous a fait gagner du temps, mais il a fallu tout vérifier sur le vrai site : sa première idée de fidélisation, un accès en avant-première pour les clients, existait déjà dans Lacoste Members.
+Voilà comment les clients deviennent les nouveaux ambassadeurs de Lacoste. Merci de nous avoir écoutés, on est prêts pour vos questions.</div>
+</section>
+
+<script>
+/* ---------- logos sur chaque slide + file des 4 réseaux ---------- */
+const secs=[...document.querySelectorAll('section')];
+secs.forEach(s=>{
+  s.insertAdjacentHTML('afterbegin','<img class="lg-l" data-tw="logo Lacoste" src="../assets/'+(s.id==='s1'?'logo-lacoste-blanc':'logo-lacoste-t')+'.png" alt="Lacoste"><img class="lg-i" data-tw="logo IUT" src="../assets/logo-iut.png" alt="IUT de Lille, site de Roubaix">');
+});
+
+/* ---------- vidéo : la miniature se remplace par le lecteur YouTube au clic ---------- */
+/* vidéo : copie locale (assets/niney-gasly.mp4), lue dans la slide sans internet ; au premier clic, lecture
+   et commandes du navigateur (pause, son, plein écran puis retour à la taille normale) */
+document.querySelectorAll('.video').forEach(v=>v.addEventListener('click',()=>{
+  if(document.body.classList.contains('reglage')||v.classList.contains('lecture'))return;
+  const c=v.querySelector('video.clip'); if(!c) return;
+  v.classList.add('lecture'); c.controls=true; c.play();
+  if(v.closest('.video-zone')) v.closest('.video-zone').classList.add('lecture');
+}));
+
+const carr=null;
+
+
+/* ---------- logo du réseau à côté de son nom, dans l'en-tête noir des tableaux ---------- */
+(()=>{const L=[[/instagram/i,'logo-instagram.svg'],[/tiktok/i,'logo-tiktok.svg'],[/pinterest/i,'logo-pinterest.svg'],[/lacoste\.com|members/i,'croco.png','cr']];
+  document.querySelectorAll('table.fun thead th small').forEach(sm=>{const t=sm.textContent; const imgs=L.filter(([r])=>r.test(t)).map(([,f,c])=>'<img src="../assets/'+f+'"'+(c?' class="'+c+'"':'')+' alt="">').join('');
+    if(imgs) sm.insertAdjacentHTML('afterbegin','<span class="rs">'+imgs+'</span>');});})();
+/* ---------- les deux vidéos (défi et fenêtre de sortie) tournent seules, en boucle, sans le son ---------- */
+document.querySelectorAll('video.clip').forEach(v=>{v.muted=true;v.loop=true;v.autoplay=true;const p=v.play();if(p)p.catch(()=>{});});
+
+
+/* ---------- carrousels des exemples : 3 contenus par étage, flèches et points ---------- */
+document.querySelectorAll('.ex.car').forEach(c=>{
+  const its=[...c.querySelectorAll('.car-it')], dots=c.querySelector('.car-dots'), num=c.querySelector('.car-num'); let k=0;
+  dots.innerHTML=its.map(()=>'<i></i>').join('');
+  const show=n=>{k=(n+its.length)%its.length; its.forEach((it,j)=>it.classList.toggle('on',j===k)); [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===k)); if(num) num.textContent=(k+1)+' / '+its.length; const cp=c.querySelector('.car-cap'), ch=its[k].querySelector('.chip'); if(cp&&ch) cp.textContent=ch.textContent;
+    its.forEach((it,j)=>it.querySelectorAll('video').forEach(v=>{ if(j===k){v.play().catch(()=>{});} }));};
+  c.querySelector('.car-p').addEventListener('click',()=>show(k-1)); c.querySelector('.car-n').addEventListener('click',()=>show(k+1));
+  [...dots.children].forEach((d,j)=>d.addEventListener('click',()=>show(j))); show(0);
+});
+
+
+/* ---------- un clic sur une vidéo du carrousel active ou coupe le son ---------- */
+document.querySelectorAll('.car-it video').forEach(v=>v.closest('.fr').addEventListener('click',()=>{ if(document.body.classList.contains('reglage')) return; v.muted=!v.muted; if(!v.muted){ v.currentTime=0; v.play().catch(()=>{}); } }));
+
+/* ---------- mode réglage (touche T) ----------
+   Chaque bloc marqué data-tw se règle : position, largeur, hauteur, zoom et cadrage de son image,
+   taille du texte, opacité (voile). Les valeurs validées se collent dans REGLAGES, clé « slide|nom ». */
+const REGLAGES={"s2|photo 2": {"ox": 36, "oy": 32, "dx": 0, "dy": 0, "z": 1}, "s2|photo 4": {"ox": 0, "oy": 0, "z": 1.082}, "s2|photo 3": {"z": 1, "dx": 0, "dy": 0}, "s2|photo 5": {"z": 1}};
+let perso={}; try{perso=JSON.parse(localStorage.getItem('reglages-plan-contenu-1')||'{}')}catch(e){perso={}}
+function sauver(){try{localStorage.setItem('reglages-plan-contenu-1',JSON.stringify(perso))}catch(e){}}
+const panneau=document.getElementById('panneau');
+let vise=null, i=0;
+const enReglage=()=>document.body.classList.contains('reglage');
+const cle=el=>el.closest('section').id+'|'+el.dataset.tw;
+/* image réglée par un bloc : la plus grande image qui lui appartient (pas la petite photo de profil ou le logo) */
+const imgDe=el=>{if(el.tagName==='IMG')return el;
+  const c=[...el.querySelectorAll('img')].filter(m=>m.closest('[data-tw]')===el);
+  return c.sort((a,b)=>b.offsetWidth*b.offsetHeight-a.offsetWidth*a.offsetHeight)[0]||null;};
+let modeCadre=false;
+const tous=[...document.querySelectorAll('[data-tw]')];
+tous.forEach(el=>{el._s0=el.getAttribute('style')||''; const m=imgDe(el); if(m&&m!==el) m._s0=m.getAttribute('style')||'';});
+function valeurs(el){const k=cle(el);return Object.assign({},REGLAGES[k]||{},perso[k]||{});}
+function appliquer(el){
+  el.setAttribute('style',el._s0); const m=imgDe(el); if(m&&m!==el) m.setAttribute('style',m._s0);
+  const v=valeurs(el);
+  if(v.dx||v.dy) el.style.translate=`${v.dx||0}vw ${v.dy||0}vh`;
+  if(v.w!=null) el.style.width=v.w+'vw';
+  if(v.h!=null) el.style.height=v.h+'vh';
+  if(v.fs!=null) el.style.fontSize=v.fs+'vw';
+  if(v.op!=null) el.style.opacity=v.op;
+  if(m){ if(v.z!=null) m.style.scale=v.z;
+    if(v.ox!=null){const p=`${v.ox}% ${v.oy}%`; m.style.objectPosition=p; m.style.transformOrigin=p; m.style.setProperty('--ox',v.ox+'%'); m.style.setProperty('--oy',v.oy+'%');}}
+}
+const r2=x=>Math.round(x*100)/100, borne=x=>Math.max(0,Math.min(100,x));
+function lire(el,n){
+  const v=valeurs(el); if(v[n]!=null) return v[n];
+  const m=imgDe(el);
+  if(n==='dx'||n==='dy') return 0;
+  if(n==='w') return r2(el.offsetWidth/innerWidth*100);
+  if(n==='h') return r2(el.offsetHeight/innerHeight*100);
+  if(n==='fs') return r2(parseFloat(getComputedStyle(el).fontSize)/innerWidth*100);
+  if(n==='op') return parseFloat(getComputedStyle(el).opacity);
+  if(n==='z') return m?(parseFloat(getComputedStyle(m).scale)||1):1;
+  if(!m) return 50;
+  const p=getComputedStyle(m).objectPosition.split(' '), q=n==='ox'?p[0]:p[1];
+  return q&&q.includes('%')?parseFloat(q):50;
+}
+function modif(el,ch){const k=cle(el); perso[k]=Object.assign({},perso[k]||{},ch); sauver(); appliquer(el); ecrire();}
+function choisir(el){if(vise)vise.classList.remove('vise'); vise=el; if(el)el.classList.add('vise'); ecrire();}
+function ecrire(){
+  if(!enReglage())return;
+  const els=[...secs[i].querySelectorAll('[data-tw]')];
+  const noms={dx:'x',dy:'y',w:'larg.',h:'haut.',z:'zoom',ox:'cadr.x',oy:'cadr.y',fs:'texte',op:'opac.'};
+  const im=vise&&imgDe(vise);
+  const barre=vise?`<div class="outils-r"><div class="t">Bloc choisi : <b>${vise.dataset.tw}</b></div>`
+    +(im?`<div><span>Zoom image</span><button data-a="z-">−</button><button data-a="z+">+</button></div>
+      <div><span>Cadrer l'image</span><button data-a="cg">←</button><button data-a="cd">→</button><button data-a="ch">↑</button><button data-a="cb">↓</button></div>`
+      :`<div><span>Taille du texte</span><button data-a="z-">−</button><button data-a="z+">+</button></div>`)
+    +`<div><span>Largeur</span><button data-a="l-">−</button><button data-a="l+">+</button><span>Hauteur</span><button data-a="h-">−</button><button data-a="h+">+</button></div>
+      <div><span>Glisser la souris</span><button data-a="mode" class="${modeCadre?'':'on'}">déplace le bloc</button><button data-a="mode" class="${modeCadre?'on':''}">recadre l'image</button></div>
+      <div><button data-a="0">Remettre ce bloc à zéro</button></div></div>`:'';
+  panneau.innerHTML='<b>Réglages · slide '+(i+1)+'</b>'+barre+els.map((el,j)=>{
+    const v=valeurs(el), t=Object.entries(v).map(([a,b])=>(noms[a]||a)+' '+b).join(' · ')||'·';
+    return `<div class="l${el===vise?' vise':''}" data-j="${j}"><span>${el.dataset.tw}</span><span>${t}</span></div>`;}).join('')
+    +'<div class="aide">Clic sur un bloc ou dans cette liste : le choisir · Maj+clic : bloc parent<br>Glisser ou flèches : déplacer · R : glisser pour recadrer l\'image<br>Molette ou + et − : zoom de l\'image (taille du texte s\'il n\'y a pas d\'image)<br>Alt+glisser ou Alt+flèches : cadrer l\'image · Maj+flèches : largeur et hauteur<br>Retour arrière : remettre le bloc à zéro · Échap : désélectionner<br>C : copier tous les réglages · P : panneau à gauche ou à droite · T : sortir</div>';
+  panneau.querySelectorAll('.l').forEach(r=>r.onclick=()=>choisir(els[+r.dataset.j]));
+  panneau.querySelectorAll('button[data-a]').forEach(b=>b.onclick=()=>action(b.dataset.a));
+}
+function zoomer(s){
+  if(!vise)return;
+  if(vise.hasAttribute('data-op')) modif(vise,{op:Math.max(0,Math.min(1,r2(lire(vise,'op')+.05*s)))});
+  else if(imgDe(vise)) modif(vise,{z:Math.max(.2,Math.round(lire(vise,'z')*(s>0?1.04:1/1.04)*1000)/1000)});
+  else modif(vise,{fs:Math.round(lire(vise,'fs')*(s>0?1.04:1/1.04)*1000)/1000});
+}
+function cadrer(n,d){const o=n==='ox'?'oy':'ox'; modif(vise,{[n]:borne(lire(vise,n)+d),[o]:lire(vise,o)});}
+function action(a){
+  if(!vise)return;
+  const t={'z+':()=>zoomer(1),'z-':()=>zoomer(-1),cg:()=>cadrer('ox',-3),cd:()=>cadrer('ox',3),ch:()=>cadrer('oy',-3),cb:()=>cadrer('oy',3),
+    'l+':()=>modif(vise,{w:r2(lire(vise,'w')+1)}),'l-':()=>modif(vise,{w:r2(lire(vise,'w')-1)}),
+    'h+':()=>modif(vise,{h:r2(lire(vise,'h')+1)}),'h-':()=>modif(vise,{h:r2(lire(vise,'h')-1)}),
+    mode:()=>{modeCadre=!modeCadre;ecrire();},'0':()=>{delete perso[cle(vise)];sauver();appliquer(vise);ecrire();}};
+  if(t[a])t[a]();
+}
+addEventListener('wheel',e=>{
+  if(!enReglage()||!vise||!vise.contains(e.target))return;
+  e.preventDefault(); zoomer(e.deltaY<0?1:-1);
+},{passive:false});
+function suivre(f){const mv=e=>f(e),up=()=>{removeEventListener('mousemove',mv);removeEventListener('mouseup',up)};addEventListener('mousemove',mv);addEventListener('mouseup',up);}
+addEventListener('mousedown',ev=>{
+  if(!enReglage()||ev.target.closest('.panneau'))return;
+  let el=ev.target.closest('[data-tw]'); if(!el)return;
+  if(ev.shiftKey){const p=el.parentElement&&el.parentElement.closest('[data-tw]'); if(p) el=p;}
+  ev.preventDefault(); choisir(el);
+  const x0=ev.clientX,y0=ev.clientY;
+  if((ev.altKey||modeCadre)&&imgDe(el)){
+    const ox0=lire(el,'ox'),oy0=lire(el,'oy'),r=el.getBoundingClientRect();
+    suivre(e=>modif(el,{ox:r2(borne(ox0-(e.clientX-x0)/r.width*100)),oy:r2(borne(oy0-(e.clientY-y0)/r.height*100))})); return;
+  }
+  const dx0=lire(el,'dx'),dy0=lire(el,'dy');
+  suivre(e=>modif(el,{dx:r2(dx0+(e.clientX-x0)/innerWidth*100),dy:r2(dy0+(e.clientY-y0)/innerHeight*100)}));
+});
+addEventListener('click',e=>{if(enReglage()&&!e.target.closest('.panneau')&&e.target.closest('[data-tw]'))e.preventDefault();},true);
+function copier(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText) return navigator.clipboard.writeText(t).catch(()=>vieux(t));
+  vieux(t);
+}
+function vieux(t){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+tous.forEach(el=>{if(Object.keys(valeurs(el)).length) appliquer(el);});
+/* ---------- notes orateur modifiables (touche N) : clic pour écrire, Échap pour sortir, C pour tout copier ---------- */
+const LNG=document.documentElement.lang||'fr', CLE_N='notes-plan-contenu-1-'+LNG; 
+let notesPerso={}; try{notesPerso=JSON.parse(localStorage.getItem(CLE_N)||'{}')}catch(e){notesPerso={}}
+const sauverNotes=()=>{try{localStorage.setItem(CLE_N,JSON.stringify(notesPerso))}catch(e){}};
+const notesEls=[...document.querySelectorAll('section .notes')];
+const AIDE=LNG==='en'?'Click to edit · Esc to leave · C to copy':'Clic pour modifier · Échap pour sortir · C pour copier';
+notesEls.forEach(n=>{const id=n.closest('section').id; n._orig=n.innerText.trim(); n.contentEditable='true'; n.spellcheck=true; n.dataset.aide=AIDE;
+  if(notesPerso[id]!=null){ if(notesPerso[id]===n._orig) delete notesPerso[id]; else n.innerText=notesPerso[id]; }
+  n.addEventListener('input',()=>{const t=n.innerText.trim(); if(t===n._orig) delete notesPerso[id]; else notesPerso[id]=t; sauverNotes();});
+});
+sauverNotes();
+const toast=document.createElement('div'); toast.className='toast'; document.body.appendChild(toast);
+function prevenir(t){toast.textContent=t; toast.classList.add('on'); clearTimeout(prevenir._t); prevenir._t=setTimeout(()=>toast.classList.remove('on'),2200);}
+function toutCopier(){
+  const tout=Object.assign({},REGLAGES); for(const c in perso) tout[c]=Object.assign({},REGLAGES[c]||{},perso[c]);
+  notesEls.forEach(n=>{const sec=n.closest('section'), id=sec.id; if(notesPerso[id]!=null) tout['notes|'+id+' (slide '+(secs.indexOf(sec)+1)+')']=notesPerso[id];});
+  copier(JSON.stringify(tout,null,1));
+  const nb=Object.keys(notesPerso).length;
+  prevenir(LNG==='en'?('Copied: settings'+(nb?' + '+nb+' edited note(s)':'')):('Copié : réglages'+(nb?' + '+nb+' note(s) modifiée(s)':'')));
+}
+
+/* ---------- navigation ---------- */
+const liens=[...document.querySelectorAll('.rail a[href^="#s"]')].filter(a=>a.textContent.trim());
+const barre=document.querySelector('.rail .bar i');
+function maj(){
+  secs.forEach((s,k)=>s.classList.toggle('ici',k===i));
+  liens.forEach((a,k)=>a.classList.toggle('on',k===i));
+  if(barre) barre.style.height=((i+1)/secs.length*100)+'%';
+  ecrire();
+}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){i=secs.indexOf(e.target);maj();}})},{threshold:.6});
+secs.forEach(s=>io.observe(s));
+maj();
+function aller(n){i=Math.max(0,Math.min(secs.length-1,n));secs[i].scrollIntoView({behavior:'smooth'});}
+addEventListener('keydown',e=>{
+  const k=e.key;
+  /* dans une note en cours d'écriture : Échap pour sortir, tout le reste s'écrit */
+  if(document.activeElement&&document.activeElement.classList&&document.activeElement.classList.contains('notes')){ if(k==='Escape'){e.preventDefault();document.activeElement.blur();} return; }
+  if(e.target&&e.target.tagName==='VIDEO')return; /* la vidéo garde ses raccourcis (espace = pause) */
+  if(document.activeElement&&document.activeElement.isContentEditable)return;
+  if(enReglage()&&vise){
+    if(k.startsWith('Arrow')){
+      e.preventDefault();
+      const hz=k==='ArrowLeft'||k==='ArrowRight', s=(k==='ArrowRight'||k==='ArrowDown')?1:-1;
+      if(e.altKey&&imgDe(vise)){const n=hz?'ox':'oy',o=hz?'oy':'ox'; modif(vise,{[n]:borne(lire(vise,n)+2*s),[o]:lire(vise,o)});}
+      else if(e.shiftKey){ if(hz) modif(vise,{w:r2(lire(vise,'w')+.5*s)}); else modif(vise,{h:r2(lire(vise,'h')+.5*s)}); }
+      else {const n=hz?'dx':'dy'; modif(vise,{[n]:r2(lire(vise,n)+.25*s)});}
+      return;
+    }
+    if(k==='+'||k==='='||k==='-'||k==='_'){e.preventDefault(); zoomer((k==='+'||k==='=')?1:-1); return;}
+    if(k==='r'||k==='R'){modeCadre=!modeCadre; ecrire(); return;}
+    if(k==='Backspace'||k==='Delete'){e.preventDefault(); delete perso[cle(vise)]; sauver(); appliquer(vise); ecrire(); return;}
+    if(k==='Escape'){choisir(null);return;}
+  }
+  if(carr&&!enReglage()&&secs[i].id==='s3'&&(k==='ArrowRight'||k==='ArrowLeft')){e.preventDefault(); carr(k==='ArrowRight'?1:-1); return;}
+  if(k==='t'||k==='T'){document.body.classList.toggle('reglage'); if(!enReglage())choisir(null); else ecrire(); return;}
+  if((k==='c'||k==='C')&&!e.metaKey&&!e.ctrlKey){toutCopier(); const a=panneau.querySelector('.aide'); if(enReglage()&&a) a.textContent='Réglages et notes copiés : colle-les dans la conversation.'; return;}
+  if((k==='p'||k==='P')&&enReglage()){panneau.classList.toggle('gauche');return;}
+  if(k==='n'||k==='N'){document.body.classList.toggle('notesvues');return;}
+  if(['ArrowDown','PageDown',' '].includes(k)){e.preventDefault();aller(i+1);}
+  else if(['ArrowUp','PageUp'].includes(k)){e.preventDefault();aller(i-1);}
+  else if(k==='Home'){e.preventDefault();aller(0);}
+  else if(k==='End'){e.preventDefault();aller(secs.length-1);}
+});
+</script>
+</body>
+</html>
