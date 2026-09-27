@@ -336,6 +336,15 @@ table.fun thead th small .rs img.cr{padding:.1em .24em;box-sizing:border-box}
 .anx-ia ul{margin:.4em 0 0;padding-left:1.2em}
 .anx-ia li{font-size:var(--fs-sm);line-height:1.4;color:rgba(255,255,255,.85);margin:.15em 0}
 
+
+/* encadré IA allégé (27/09) : trois blocs répartis sur la hauteur */
+#s6 .anx-ia{justify-content:space-between;padding:1.6em 1.5em}
+#s6 .anx-ia>div{flex:1;display:flex;flex-direction:column;justify-content:center;border-top:1px solid rgba(255,255,255,.14);padding-top:1.4vh}
+#s6 .anx-ia h3{font-size:var(--fs-chiffre);font-weight:500;letter-spacing:-.02em;margin-bottom:.6vh}
+#s6 .anx-ia .qui{font-size:clamp(17px,1.4vw,1.35rem)}
+#s6 .anx-ia .qui img{height:1.4em}
+#s6 .anx-ia li{font-size:var(--fs-md)}
+
 /* notes orateur, touche N */
 .notes{display:none;position:fixed;left:var(--rail);right:0;bottom:0;background:var(--encre);
   color:#fff;padding:1.6vh 4vw;font-size:var(--fs-sm);line-height:1.55;max-height:34vh;overflow:auto;z-index:40}
@@ -571,13 +580,13 @@ Voilà comment les clients deviennent les nouveaux ambassadeurs de Lacoste. Pour
   <h2 data-tw="titre">Appendix: sources and tools used</h2>
   <div class="anx">
     <div class="anx-c" data-tw="sources"><ol class="apa"><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, session 5 slides</i> (slides 93 to 96). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, session 6 and 7 slides</i> (slides 104, 109, 114 to 119, 130, 131, 138 to 143). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, syllabus</i> (pp. 18 and 19). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026, September 24). <i>Sessions 7 and 8</i> (content plan brief, recording). IUT de Lille.</span></li><li><span class="r">Ecommerce Nation. (2024, 2025). <i>Social media guide</i> (course appendices). ecommerce-nation.fr</span></li><li><span class="r">Da Silva, R. and Chtioui, S. (2026, September 18). <i>Lacoste social media audit</i> (2nd deliverable).</span></li><li><span class="r">Da Silva, R. (2026). <i>Persona sheet, mascot and challenge video</i> (working document).</span></li><li><span class="r">Lacoste. (2026). <i>L.12.D slim fit polo in stretch mini piqué</i> (product page). lacoste.com. 26/09/2026.</span></li><li><span class="r">Lacoste. (n.d.). <i>Lacoste Members</i> (loyalty programme). lacoste.com. 26/09/2026.</span></li><li><span class="r">Lacoste [@lacoste]. (n.d.). <i>Instagram account</i> instagram.com/lacoste. 26/09/2026.</span></li><li><span class="r">Lacoste [@lacoste]. (n.d.). <i>TikTok account</i> tiktok.com/@lacoste. 27/09/2026.</span></li><li><span class="r">Lacoste. (n.d.). <i>Pinterest profile</i> pinterest.fr/lacoste. 26/09/2026.</span></li></ol></div>
-    <div class="anx-ia" data-tw="IA et outils"><h3>AI, with hindsight</h3><div><div class="qui"><img src="../assets/logo-claude.svg" alt="">What Claude did</div><ul><li>Audited lacoste.com</li><li>Found the brief in our recordings</li><li>Designed the slides and mock-ups</li></ul></div><div><div class="qui">Its limit</div><ul><li>Its first loyalty idea already existed in Lacoste Members</li><li>Everything was checked on the real website</li></ul></div><div><div class="qui"><img src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5 (Romane)</div><ul><li>Mascot, persona, challenge visual</li><li>Fake account and likes inside the image: never shown as real data</li></ul></div><div><div class="qui"><img src="../assets/logo-gemini.svg" alt="">Gemini</div><ul><li>Reel, pin, carousel, ad, reviews, gauge</li><li>First attempts redone: horizontal video, duplicated selfie</li></ul></div></div>
+    <div class="anx-ia" data-tw="IA et outils"><h3>AI, with hindsight</h3><div><div class="qui"><img src="../assets/logo-claude.svg" alt="">What Claude did</div><ul><li>Designed the slides</li><li>Suggested a few action ideas</li></ul></div><div><div class="qui"><img src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5 (Romane)</div><ul><li>Mascot, persona, challenge visual</li></ul></div><div><div class="qui"><img src="../assets/logo-gemini.svg" alt="">Gemini</div><ul><li>Video generation</li></ul></div></div>
   </div>
   <p class="pied" data-tw="mention">Romane Da Silva &amp; Sofian Chtioui · BUT3 MDEE · IUT de Roubaix · 1 October 2026</p>
   <div class="num">6 / 6</div>
   <div class="notes">Toutes nos sources sont ici, ainsi que la façon dont on a utilisé l'IA.
 Côté cours, on s'est appuyés sur vos supports des séances 5, 6 et 7, sur le syllabus, et sur ce que vous nous avez dit en TD le 24 septembre pour la consigne du plan de contenu. Côté marque, tout vient de sources réelles : le site lacoste.com, que nous avons consulté le 26 septembre, et les comptes officiels de Lacoste sur Instagram, TikTok et Pinterest.
-Pour l'IA, on a utilisé trois outils. Claude nous a aidés à auditer le site et à construire les slides, mais il a fallu tout vérifier : sa première idée de fidélisation existait déjà. Romane a généré la mascotte avec GPT Image 2.5 : l'image affichait un faux compte et de faux likes, qu'on ne présente jamais comme de vrais chiffres. Et Gemini a produit nos autres contenus, avec des premiers essais à refaire, comme une vidéo sortie à l'horizontale au lieu du format vertical.
+Pour l'IA, on a utilisé trois outils. Claude nous a aidés à concevoir les slides et nous a proposé quelques idées d'actions. Romane a généré la mascotte, la persona et le visuel du défi avec GPT Image 2.5. Et Gemini nous a servi à générer les vidéos.
 Merci de nous avoir écoutés, on est prêts pour vos questions.</div>
 </section>
 
