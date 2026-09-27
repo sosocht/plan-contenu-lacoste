@@ -319,6 +319,23 @@ table.fun thead th small .rs img.cr{padding:.1em .24em;box-sizing:border-box}
 .fr{box-shadow:0 0 0 1px rgba(10,10,10,.12),0 6px 18px rgba(10,10,10,.08)}
 .car-cap{text-align:center;font-size:var(--fs-md);font-weight:600;line-height:1.2;min-height:1.2em;margin:0}
 
+
+/* ============ S6 · ANNEXE : sources et outils (format du deck SEO) ============ */
+#s6{justify-content:flex-start}
+.anx{display:grid;grid-template-columns:3fr 1.1fr;gap:1.2vw;flex:1;min-height:0}
+.anx-c{background:var(--carte);border:1px solid var(--filet);border-radius:var(--r);padding:1.1em 1.4em;display:flex;flex-direction:column;min-height:0}
+.apa{list-style:none;margin:0;padding:0;counter-reset:src;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(6,1fr);grid-auto-flow:column;gap:.6vh .8vw;flex:1;min-height:0}
+.apa li{counter-increment:src;position:relative;display:flex;align-items:center;background:#f3f3f1;border:1px solid var(--filet);border-radius:12px;padding:.1em .8em .1em 2.8em;min-height:0;overflow:hidden}
+.apa li::before{content:counter(src,decimal-leading-zero);position:absolute;left:.8em;top:50%;transform:translateY(-50%);font-weight:700;font-size:clamp(13px,.95vw,.95rem);color:var(--bleu)}
+.apa .r{font-size:clamp(11.5px,.84vw,.82rem);font-style:italic;color:var(--sourdine);line-height:1.25;overflow-wrap:anywhere}
+.apa li i{font-style:normal;font-weight:700;color:var(--encre)}
+.anx-ia{background:var(--encre);color:#fff;border-radius:var(--r);padding:1.2em 1.3em;display:flex;flex-direction:column;gap:1.5vh;min-height:0;overflow:hidden}
+.anx-ia h3{color:#fff;margin:0;font-size:var(--fs-md);font-weight:700}
+.anx-ia .qui{display:flex;align-items:center;gap:.5em;font-weight:700;font-size:var(--fs-md)}
+.anx-ia .qui img{height:1.3em;width:auto}
+.anx-ia ul{margin:.4em 0 0;padding-left:1.2em}
+.anx-ia li{font-size:var(--fs-sm);line-height:1.4;color:rgba(255,255,255,.85);margin:.15em 0}
+
 /* notes orateur, touche N */
 .notes{display:none;position:fixed;left:var(--rail);right:0;bottom:0;background:var(--encre);
   color:#fff;padding:1.6vh 4vw;font-size:var(--fs-sm);line-height:1.55;max-height:34vh;overflow:auto;z-index:40}
@@ -369,7 +386,7 @@ body.reglage .panneau{display:block}
 <nav class="rail" aria-label="Sommaire">
   <a href="#s1"><img class="mark" src="../assets/croco.png" alt="Lacoste, aller à la première diapo"></a>
   <div class="liens">
-  <a href="#s1" class="on">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a>
+  <a href="#s1" class="on">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a><a href="#s6">6</a>
   </div>
   <div class="bar"><i></i></div>
 </nav>
@@ -385,7 +402,7 @@ body.reglage .panneau{display:block}
   </div>
   <p class="mention tw" data-tw="mention" style="--x:50%;--y:93.4%;--l:86%">R5.MDEE.13 · Stratégie social media &amp; e-CRM · M. Igor Perez</p>
   <p class="meta tw" data-tw="auteurs" style="--x:50%;--y:96.2%;--l:86%">Romane Da Silva &amp; Sofian Chtioui · BUT3 MDEE · IUT de Roubaix · 1er octobre 2026</p>
-  <div class="num">1 / 5</div>
+  <div class="num">1 / 6</div>
   <div class="notes">Bonjour tout le monde, j'espère que vous allez bien.
 Pour cette dernière présentation, on repart de Lacoste, là où on s'était arrêtés. Notre audit avait montré une marque très suivie, mais dont l'engagement repose surtout sur ses ambassadeurs : sans eux, sur Instagram, on retombe à 0,19 % d'engagement.
 D'où notre problématique : comment Lacoste peut-elle engager sa communauté sur les réseaux sociaux sans dépendre uniquement de ses ambassadeurs ?
@@ -445,7 +462,7 @@ Pour y répondre, on vous présente d'abord la personne qu'on veut toucher. Ensu
     </div>
   </div>
   <p class="pied">Source : fiche persona réalisée par Romane Da Silva avec <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5.</p>
-  <div class="num">2 / 5</div>
+  <div class="num">2 / 6</div>
   <div class="notes">Voici Claire, 37 ans, cadre en marketing à Lyon. Pourquoi elle ? Notre audit a montré que Lacoste parle surtout aux hommes. Sur Pinterest par exemple, son plus gros tableau s'appelle Menswear, alors que l'audience française du réseau est majoritairement féminine. Claire, c'est la cliente qu'on veut aller chercher.
 Elle connaît Lacoste depuis longtemps et elle aime les pièces de qualité, qui durent. Mais elle a des freins : le prix, des collections qu'elle trouve parfois trop classiques, et peu de contenus pensés pour les femmes de son âge.
 Regardez son parcours d'achat : il suit exactement les trois étages du funnel. Elle découvre une collection sur Instagram, c'est le TOFU. Elle va sur le site, compare, puis achète : c'est le MOFU. Et si elle est contente, elle partage : c'est le BOFU.
@@ -474,7 +491,7 @@ La fiche a été réalisée par Romane avec GPT Image 2.5. Toutes les actions qu
     </div>
   </div>
   <p class="pied">Sources : Igor Perez, support des séances 6 et 7 (slides 109, 116, 130, 142) ; visuels : Romane Da Silva avec <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5, et <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini.</p>
-  <div class="num">3 / 5</div>
+  <div class="num">3 / 6</div>
   <div class="notes">Premier étage, le TOFU, pour top of funnel. Le but : faire découvrir Lacoste à des gens qui ne la suivent pas encore. C'est là qu'on met l'essentiel du budget, 6 500 euros par jour sur 10 000, parce qu'il faut du volume.
 Une question pour vous : si on veut toucher beaucoup de monde nouveau, vite, est-ce qu'on peut compter uniquement sur des publications gratuites ? Pas vraiment : sans achat média, rien ne garantit qu'on sera vu. C'est pour ça que trois de nos quatre actions sont du paid media.
 Sur Instagram, des Reels sponsorisés qui racontent comment naît un polo. Vous nous avez montré que les Reels sont en haut du parcours d'achat Instagram, pour 5 à 6 euros les mille impressions.
@@ -506,7 +523,7 @@ La quatrième action est de l'owned media : la mascotte que vous voyez à gauche
     </div>
   </div>
   <p class="pied">Sources : Igor Perez, supports des séances 5 (slide 95), 6 et 7 (slides 119, 131, 142, 143) ; visuels : Romane Da Silva avec <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5, et <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini.</p>
-  <div class="num">4 / 5</div>
+  <div class="num">4 / 6</div>
   <div class="notes">Deuxième étage, le MOFU. La personne connaît maintenant la marque : il faut la convaincre, puis la faire acheter. Dans votre matrice, cet étage s'appelle d'ailleurs « considération et conversion ». On y met les 3 500 euros par jour qui restent.
 Ici, on utilise trois types du modèle PESO.
 En owned, un carrousel épinglé en haut du profil Instagram, « Du coton au crocodile », la suite du Reel du TOFU. Pas besoin de payer : les curieux qu'on a attirés arrivent sur le profil, et c'est la première chose qu'ils voient. Et un carrousel, on le fait défiler, donc on prend le temps de s'intéresser.
@@ -537,7 +554,7 @@ Ensuite, deux actions en paid, en retargeting, c'est-à-dire qu'on ne vise que l
     </div>
   </div>
   <p class="pied">Sources : lacoste.com, polo L.12.D et page Lacoste Members (consulté le 26/09/2026) ; Igor Perez, support de la séance 5 (slides 93, 96) ; visuels avec <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini ; audit avec <img class="ia" src="../assets/logo-claude.svg" alt="">Claude.</p>
-  <div class="num">5 / 5</div>
+  <div class="num">5 / 6</div>
   <div class="notes">Dernier étage, le BOFU : faire racheter et faire recommander. Vous nous aviez dit en cours qu'on pouvait aussi travailler le site, parce que c'est de l'owned media. On est donc allés sur lacoste.com pour voir ce qui existe déjà et ce qui manque. Ici, aucun achat média : tout le budget est déjà utilisé plus haut.
 Le site est déjà bien fait : on peut acheter depuis la page liste, il y a des avis clients et un programme de fidélité, Lacoste Members. Mais il manque quatre choses.
 Un : la taille n'est jamais mémorisée. On propose un bouton « Ajouter en 36 » directement sur la vignette, un clic au lieu de trois.
@@ -545,7 +562,23 @@ Deux : rien ne retient quelqu'un qui quitte son panier. À gauche, notre maquett
 Trois : les 424 avis de ce polo sont uniquement en texte. On ajoute les photos des clients, et c'est du shared : ce sont eux qui créent le contenu.
 Et quatre : Lacoste Members ne récompense pas le partage, et ses cadeaux sont tirés au sort. On ajoute une jauge visible, avec des points pour les posts et le parrainage. Pour mesurer, chaque client a un code de parrainage unique, validé après le délai de retour de 30 jours.
 Pour cet audit, on s'est aidés de Claude. Il nous a fait gagner du temps, mais il a fallu tout vérifier sur le vrai site : sa première idée de fidélisation, un accès en avant-première pour les clients, existait déjà dans Lacoste Members.
-Voilà comment les clients deviennent les nouveaux ambassadeurs de Lacoste. Merci de nous avoir écoutés, on est prêts pour vos questions.</div>
+Voilà comment les clients deviennent les nouveaux ambassadeurs de Lacoste. Pour finir, un mot sur nos sources et sur l'IA.</div>
+</section>
+
+
+<!-- ============ S6 · ANNEXE (format du deck Rédacteur SEO) ============ -->
+<section id="s6" class="haut">
+  <h2 data-tw="titre">Annexe : sources et outils utilisés</h2>
+  <div class="anx">
+    <div class="anx-c" data-tw="sources"><ol class="apa"><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, support de la séance 5</i> (slides 93 à 96). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, support des séances 6 et 7</i> (slides 104, 109, 114 à 119, 130, 131, 138 à 143). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, syllabus</i> (p. 18 et 19). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026, 24 septembre). <i>Séances 7 et 8</i> (consigne du plan de contenu, enregistrement). IUT de Lille.</span></li><li><span class="r">Ecommerce Nation. (2024, 2025). <i>Guide des réseaux sociaux</i> (annexes du cours). ecommerce-nation.fr</span></li><li><span class="r">Da Silva, R. et Chtioui, S. (2026, 18 septembre). <i>Audit social media de Lacoste</i> (2e livrable).</span></li><li><span class="r">Da Silva, R. (2026). <i>Fiche persona, mascotte et vidéo du défi</i> (document de travail).</span></li><li><span class="r">Lacoste. (2026). <i>Polo L.12.D slim fit en mini piqué stretch</i> (fiche produit). lacoste.com. 26/09/2026.</span></li><li><span class="r">Lacoste. (s. d.). <i>Lacoste Members</i> (programme de fidélité). lacoste.com. 26/09/2026.</span></li><li><span class="r">Lacoste [@lacoste]. (s. d.). <i>Compte Instagram</i> instagram.com/lacoste. 26/09/2026.</span></li><li><span class="r">Lacoste [@lacoste]. (s. d.). <i>Compte TikTok</i> tiktok.com/@lacoste. 27/09/2026.</span></li><li><span class="r">Lacoste. (s. d.). <i>Profil Pinterest</i> pinterest.fr/lacoste. 26/09/2026.</span></li></ol></div>
+    <div class="anx-ia" data-tw="IA et outils"><h3>L'IA, avec du recul</h3><div><div class="qui"><img src="../assets/logo-claude.svg" alt="">Ce que Claude a fait</div><ul><li>L'audit de lacoste.com</li><li>Retrouvé la consigne dans nos enregistrements</li><li>Conçu les slides et les maquettes</li></ul></div><div><div class="qui">Sa limite</div><ul><li>Sa première idée de fidélisation existait déjà dans Lacoste Members</li><li>Tout a été vérifié sur le vrai site</li></ul></div><div><div class="qui"><img src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5 (Romane)</div><ul><li>Mascotte, persona, visuel du défi</li><li>Faux compte et faux likes dans l'image : jamais présentés comme réels</li></ul></div><div><div class="qui"><img src="../assets/logo-gemini.svg" alt="">Gemini</div><ul><li>Reel, épingle, carrousel, pub, avis, jauge</li><li>Premiers essais refaits : vidéo horizontale, selfie dédoublé</li></ul></div></div>
+  </div>
+  <p class="pied" data-tw="mention">Romane Da Silva &amp; Sofian Chtioui · BUT3 MDEE · IUT de Roubaix · 1er octobre 2026</p>
+  <div class="num">6 / 6</div>
+  <div class="notes">Toutes nos sources sont ici, ainsi que la façon dont on a utilisé l'IA.
+Côté cours, on s'est appuyés sur vos supports des séances 5, 6 et 7, sur le syllabus, et sur ce que vous nous avez dit en TD le 24 septembre pour la consigne du plan de contenu. Côté marque, tout vient de sources réelles : le site lacoste.com, que nous avons consulté le 26 septembre, et les comptes officiels de Lacoste sur Instagram, TikTok et Pinterest.
+Pour l'IA, on a utilisé trois outils. Claude nous a aidés à auditer le site et à construire les slides, mais il a fallu tout vérifier : sa première idée de fidélisation existait déjà. Romane a généré la mascotte avec GPT Image 2.5 : l'image affichait un faux compte et de faux likes, qu'on ne présente jamais comme de vrais chiffres. Et Gemini a produit nos autres contenus, avec des premiers essais à refaire, comme une vidéo sortie à l'horizontale au lieu du format vertical.
+Merci de nous avoir écoutés, on est prêts pour vos questions.</div>
 </section>
 
 <script>
@@ -581,7 +614,7 @@ document.querySelectorAll('.ex.car').forEach(c=>{
   const its=[...c.querySelectorAll('.car-it')], dots=c.querySelector('.car-dots'), num=c.querySelector('.car-num'); let k=0;
   dots.innerHTML=its.map(()=>'<i></i>').join('');
   const show=n=>{k=(n+its.length)%its.length; its.forEach((it,j)=>it.classList.toggle('on',j===k)); [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===k)); if(num) num.textContent=(k+1)+' / '+its.length; const cp=c.querySelector('.car-cap'), ch=its[k].querySelector('.chip'); if(cp&&ch) cp.textContent=ch.textContent;
-    its.forEach((it,j)=>it.querySelectorAll('video').forEach(v=>{ if(j===k){v.play().catch(()=>{});} }));};
+    its.forEach((it,j)=>it.querySelectorAll('video').forEach(v=>{ v.muted=true; if(j===k){v.play().catch(()=>{});} }));};
   c.querySelector('.car-p').addEventListener('click',()=>show(k-1)); c.querySelector('.car-n').addEventListener('click',()=>show(k+1));
   [...dots.children].forEach((d,j)=>d.addEventListener('click',()=>show(j))); show(0);
 });
@@ -718,7 +751,12 @@ function toutCopier(){
 /* ---------- navigation ---------- */
 const liens=[...document.querySelectorAll('.rail a[href^="#s"]')].filter(a=>a.textContent.trim());
 const barre=document.querySelector('.rail .bar i');
+
+/* ---------- son coupé dès qu'on change de slide ---------- */
+let derniere=-1;
+const couperSon=()=>document.querySelectorAll('video').forEach(v=>{v.muted=true;});
 function maj(){
+  if(i!==derniere){ couperSon(); derniere=i; }
   secs.forEach((s,k)=>s.classList.toggle('ici',k===i));
   liens.forEach((a,k)=>a.classList.toggle('on',k===i));
   if(barre) barre.style.height=((i+1)/secs.length*100)+'%';
