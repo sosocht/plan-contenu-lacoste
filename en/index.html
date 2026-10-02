@@ -324,7 +324,7 @@ table.fun thead th small .rs img.cr{padding:.1em .24em;box-sizing:border-box}
 #s6{justify-content:flex-start}
 .anx{display:grid;grid-template-columns:3fr 1.1fr;gap:1.2vw;flex:1;min-height:0}
 .anx-c{background:var(--carte);border:1px solid var(--filet);border-radius:var(--r);padding:1.1em 1.4em;display:flex;flex-direction:column;min-height:0}
-.apa{list-style:none;margin:0;padding:0;counter-reset:src;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:.6vh .8vw;flex:1;min-height:0}
+.apa{list-style:none;margin:0;padding:0;counter-reset:src;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(8,1fr);grid-auto-flow:column;gap:.6vh .8vw;flex:1;min-height:0}
 .apa li{counter-increment:src;position:relative;display:flex;align-items:center;background:#f3f3f1;border:1px solid var(--filet);border-radius:12px;padding:.1em .8em .1em 2.8em;min-height:0;overflow:hidden}
 .apa li::before{content:counter(src,decimal-leading-zero);position:absolute;left:.8em;top:50%;transform:translateY(-50%);font-weight:700;font-size:clamp(13px,.95vw,.95rem);color:var(--bleu)}
 .apa .r{font-size:clamp(11.5px,.84vw,.82rem);font-style:italic;color:var(--sourdine);line-height:1.25;overflow-wrap:anywhere}
@@ -368,6 +368,29 @@ table.fun thead th small .rs img.cr{padding:.1em .24em;box-sizing:border-box}
 .zoom-ecran.on{display:grid}
 .zoom-ecran img{max-width:94vw;max-height:92vh;border-radius:1.2vh;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 @media print{.zoom-ecran{display:none!important}}
+
+
+/* ============ Slide 6, retours du 02/10 : légende, +/− sans fond, astérisque, info ============ */
+#secrm h2 .ast{font-size:var(--fs-sm);font-weight:400;letter-spacing:0;color:var(--tenu);margin-left:1em;vertical-align:middle}
+.pm>div{background:none!important;border:0!important;padding:0!important;border-radius:0}
+.pm ul{list-style:none;padding:0}
+.pm li{position:relative;padding-left:1.2em}
+.pm .plus li::before,.pm .moins li::before{position:absolute;left:0;top:0;font-weight:800}
+.pm .plus li::before{content:"+";color:#006900} .pm .moins li::before{content:"−";color:#c40000}
+.tip{display:flex;gap:.6em;align-items:flex-start;margin:0;font-size:var(--fs-sm);font-weight:300;color:var(--sourdine);line-height:1.4;border-top:1px solid var(--filet);padding-top:1.4vh}
+.tip svg{width:1.3em;height:1.3em;flex:none;margin-top:.05em}
+.tip b{font-weight:600;color:var(--encre)}
+
+/* ============ STARFISH : 5 branches, 3 post-it chacune (02/10) ============ */
+#sstar .wrap{flex:1;min-height:0;display:flex;flex-direction:column}
+.sf{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5vw;margin-top:1vh}
+.sf-col{display:flex;flex-direction:column;gap:1.6vh;min-height:0}
+.sf-h{display:flex;align-items:center;gap:.45em;font-size:clamp(18px,1.9vw,1.8rem);font-weight:600;letter-spacing:-.02em;margin:0 0 .3vh}
+.sf-h svg{width:1.25em;height:1.25em;flex:none}
+.post{position:relative;flex:1;min-height:0;background:#ffe97d;color:#2b2600;border-radius:6px;padding:1.6vh .9vw 3.4vh;font-size:var(--fs-md);line-height:1.35;box-shadow:0 6px 14px rgba(10,10,10,.13)}
+.post::before{content:"";position:absolute;left:28%;right:28%;top:-.7vh;height:1.6vh;background:var(--c);opacity:.85;border-radius:2px}
+.sf-col .post:nth-of-type(1){transform:rotate(-1.2deg)} .sf-col .post:nth-of-type(2){transform:rotate(.9deg)} .sf-col .post:nth-of-type(3){transform:rotate(-.6deg)}
+.post .qui{position:absolute;right:.8vw;bottom:1vh;font-size:var(--fs-sm);font-weight:600;color:rgba(43,38,0,.6)}
 
 /* notes orateur, touche N */
 .notes{display:none;position:fixed;left:var(--rail);right:0;bottom:0;background:var(--encre);
@@ -419,7 +442,7 @@ body.reglage .panneau{display:block}
 <nav class="rail" aria-label="Contents">
   <a href="#s1"><img class="mark" src="../assets/croco.png" alt="Lacoste, go to the first slide"></a>
   <div class="liens">
-  <a href="#s1" class="on">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a><a href="#secrm">6</a><a href="#s6">7</a>
+  <a href="#s1" class="on">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a><a href="#secrm">6</a><a href="#sstar">7</a><a href="#s6">8</a>
   </div>
   <div class="bar"><i></i></div>
 </nav>
@@ -435,11 +458,7 @@ body.reglage .panneau{display:block}
   </div>
   <p class="mention tw" data-tw="mention" style="--x:50%;--y:93.4%;--l:86%">R5.MDEE.13 · Social media strategy &amp; e-CRM · Mr Igor Perez</p>
   <p class="meta tw" data-tw="auteurs" style="--x:50%;--y:96.2%;--l:86%">Romane Da Silva &amp; Sofian Chtioui · BUT3 MDEE · IUT de Roubaix · 1 October 2026</p>
-  <div class="num">1 / 7</div>
-  <div class="notes">Bonjour tout le monde, j'espère que vous allez bien.
-Pour cette dernière présentation, on repart de Lacoste, là où on s'était arrêtés. Notre audit avait montré une marque très suivie, mais dont l'engagement repose surtout sur ses ambassadeurs : sans eux, sur Instagram, on retombe à 0,19 % d'engagement.
-D'où notre problématique : comment Lacoste peut-elle engager sa communauté sur les réseaux sociaux sans dépendre uniquement de ses ambassadeurs ?
-Pour y répondre, on vous présente d'abord la personne qu'on veut toucher. Ensuite, notre plan de contenu, étage par étage du funnel : le TOFU, le MOFU et le BOFU. Et pour chaque action, on vous précise son type dans le modèle PESO : paid, earned, owned ou shared.</div>
+  <div class="num">1 / 8</div>
 </section>
 
 <!-- ============ S2 · PERSONA (réf. « texte / grande carte » de Velocity Club, inversé : moodboard à gauche, fiche à droite) ============ -->
@@ -495,10 +514,7 @@ Pour y répondre, on vous présente d'abord la personne qu'on veut toucher. Ensu
     </div>
   </div>
   <p class="pied">Source: persona sheet made by Romane Da Silva with <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5.</p>
-  <div class="num">2 / 7</div>
-  <div class="notes">Voici Claire, 37 ans, cadre en marketing à Lyon. Pourquoi elle ? Notre audit a montré que Lacoste parle surtout aux hommes. Sur Pinterest par exemple, son plus gros tableau s'appelle Menswear, alors que l'audience française du réseau est majoritairement féminine. Claire, c'est la cliente qu'on veut aller chercher.
-Elle connaît Lacoste depuis longtemps et elle aime les pièces de qualité, qui durent. Mais elle a des freins : le prix, des collections qu'elle trouve parfois trop classiques, et peu de contenus pensés pour les femmes de son âge.
-Regardez son parcours d'achat : il suit exactement les trois étages du funnel. Elle découvre une collection sur Instagram, c'est le TOFU. Elle va sur le site, compare, puis achète : c'est le MOFU. Et si elle est contente, elle partage : c'est le BOFU.</div>
+  <div class="num">2 / 8</div>
 </section>
 
 <!-- ============ S3 · TOFU (exemple à gauche, 30 % ; tableau à droite, 70 %) ============ -->
@@ -523,14 +539,7 @@ Regardez son parcours d'achat : il suit exactement les trois étages du funnel. 
     </div>
   </div>
   <p class="pied">Sources: Igor Perez, session 6 and 7 slides (109, 116, 130, 142); visuals: Romane Da Silva with <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5, and <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini.</p>
-  <div class="num">3 / 7</div>
-  <div class="notes">Premier étage, le TOFU, pour top of funnel. Le but : faire découvrir Lacoste à des gens qui ne la suivent pas encore. C'est là qu'on met l'essentiel du budget, 6 500 euros par jour sur 10 000, parce qu'il faut du volume.
-Pourquoi autant de paid, alors qu'une vidéo publiée gratuitement peut aussi devenir virale ? Parce que le paid permet de cibler : on choisit qui voit la publicité, par exemple des femmes qui s'intéressent au tennis et à la mode. En owned, on ne choisit pas : c'est l'algorithme qui décide à qui montrer la vidéo, et rien ne garantit qu'elle tombe sur la bonne cible. C'est pour ça que trois de nos quatre actions sont du paid media.
-Sur Instagram, des Reels sponsorisés qui racontent comment naît un polo.
-Sur TikTok, des In-Feed Ads dans le fil « Pour toi », à environ 9 euros les mille vues. On n'a pas pris le TopView : il demande plus de 40 000 euros par jour pour un lancement, soit quatre fois notre budget.
-Sur Pinterest, des épingles sponsorisées pour les femmes. C'est le réseau le moins cher, entre 10 centimes et 1,50 dollar par action, et c'est celui de Claire.
-La quatrième action est de l'owned media : la mascotte, publiée gratuitement sur les comptes de la marque. On a décidé de créer ce personnage parce que ce type de contenu fonctionne très bien en ce moment sur les réseaux : des mascottes générées par IA, mi-animal mi-humain, qui parlent et se comportent comme nous. Reels et TikTok montrent aussi les vidéos aux non-abonnés, donc un bon contenu peut circuler sans budget. Et ce personnage répond à notre problématique : il porte la marque à la place des ambassadeurs, sans contrat.
-À gauche, nos trois contenus pour cet étage, dans l'ordre du tableau : le Reel qui montre la fabrication du polo, l'épingle Pinterest pour les femmes, et la publication de la mascotte. Un mot sur l'IA : la mascotte a été générée par Romane avec GPT Image 2.5, le Reel et l'épingle avec Gemini.</div>
+  <div class="num">3 / 8</div>
 </section>
 
 <!-- ============ S4 · MOFU (tableau à gauche, 70 % ; exemple à droite, 30 %) ============ -->
@@ -555,13 +564,7 @@ La quatrième action est de l'owned media : la mascotte, publiée gratuitement s
     </div>
   </div>
   <p class="pied">Sources: Igor Perez, session 5 slide (95), session 6 and 7 slides (119, 131, 142, 143); visuals: Romane Da Silva with <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5, and <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini.</p>
-  <div class="num">4 / 7</div>
-  <div class="notes">Deuxième étage, le MOFU. La personne connaît maintenant la marque : il faut la convaincre, puis la faire acheter. Dans la matrice, cet étage s'appelle d'ailleurs « considération et conversion ». On y met les 3 500 euros par jour qui restent.
-Ici, on utilise trois types du modèle PESO.
-En owned, un carrousel épinglé en haut du profil Instagram, « Du coton au crocodile », la suite du Reel du TOFU. Pas besoin de payer : les curieux qu'on a attirés arrivent sur le profil, et c'est la première chose qu'ils voient. Et un carrousel, on le fait défiler, donc on prend le temps de s'intéresser.
-En shared, le défi #CrocodileVibes, que vous voyez à droite. La mascotte lance le défi, et ce sont les internautes qui créent les vidéos. Ce n'est pas de l'earned, parce que la participation est provoquée par la marque. C'est l'action qui répond le plus directement à notre problématique : la communauté prend le relais des ambassadeurs. D'où notre indicateur : la part des vidéos publiées par des personnes qui ne sont pas ambassadrices. La seule dépense, c'est une dotation ponctuelle de vingt polos personnalisés, 2 000 euros.
-Ensuite, deux actions en paid, en retargeting, c'est-à-dire qu'on ne vise que les personnes qui ont déjà réagi. Sur Pinterest, une Collection Ads pour les femmes qui ont enregistré nos épingles. Et sur Instagram, une pub avec un bouton « Ajouter au panier » qui ouvre directement le site dans l'application, panier déjà rempli. Une Story gratuite ne suffirait pas : elle n'est montrée qu'aux abonnés, et ces personnes ne suivent souvent pas le compte. Moins d'étapes, donc moins d'abandons.
-À droite, nos trois contenus pour cet étage, dans l'ordre du tableau : le carrousel « Du coton au crocodile », la vidéo du défi, où la mascotte lance elle-même le défi à la communauté (un clic pour le son), et la pub « Ajouter au panier ».</div>
+  <div class="num">4 / 8</div>
 </section>
 
 <!-- ============ S5 · BOFU (exemple à gauche, 30 % ; tableau à droite, 70 %) ============ -->
@@ -586,14 +589,7 @@ Ensuite, deux actions en paid, en retargeting, c'est-à-dire qu'on ne vise que l
     </div>
   </div>
   <p class="pied">Sources: lacoste.com, L.12.D polo and Lacoste Members page (accessed 26/09/2026); Igor Perez, session 5 slides (93, 96); visuals with <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini; audit with <img class="ia" src="../assets/logo-claude.svg" alt="">Claude.</p>
-  <div class="num">5 / 7</div>
-  <div class="notes">Dernier étage, le BOFU : faire racheter et faire recommander. Vous nous aviez dit en cours qu'on pouvait aussi travailler le site, parce que c'est de l'owned media. On est donc allés sur lacoste.com pour voir ce qui existe déjà et ce qui manque. Ici, aucun achat média : tout le budget est déjà utilisé plus haut.
-Le site est déjà bien fait : on peut acheter depuis la page liste, il y a des avis clients et un programme de fidélité, Lacoste Members. Mais il manque quatre choses.
-Un : la taille n'est jamais mémorisée. On propose un bouton « Ajouter en 36 » directement sur la vignette, un clic au lieu de trois.
-Deux : rien ne retient quelqu'un qui quitte son panier. À gauche, notre maquette animée, montée sur une vraie capture du site : la mascotte revient, sans remise, pour garder l'image premium. Avec les flèches, vous verrez aussi les deux autres contenus de cet étage, les avis avec photos et la jauge Members, générés avec Gemini.
-Trois : les 424 avis de ce polo sont uniquement en texte. On ajoute les photos des clients, et c'est du shared : ce sont eux qui créent le contenu.
-Et quatre : Lacoste Members ne récompense pas le partage, et ses cadeaux sont tirés au sort. On ajoute une jauge visible, avec des points pour les posts et le parrainage. Pour mesurer, chaque client a un code de parrainage unique, validé après le délai de retour de 30 jours.
-Voilà comment les clients deviennent les nouveaux ambassadeurs de Lacoste.</div>
+  <div class="num">5 / 8</div>
 </section>
 
 
@@ -601,36 +597,40 @@ Voilà comment les clients deviennent les nouveaux ambassadeurs de Lacoste.</div
 <!-- ============ E-CRM (réf. : tableau de bord d'Insyder, insyder.io ; maquette maquettes/ecrm.html) ============ -->
 <section id="secrm">
   <div class="wrap">
-    <h2 data-tw="titre">Our e-CRM<span class="gris">: Kaïman</span></h2>
+    <h2 data-tw="titre">Our e-CRM<span class="gris">: Kaïman*</span><span class="ast">* a cousin of the crocodile, a nod to Lacoste</span></h2>
     <div class="ecrm">
       <div class="ecran" data-tw="écran" title="Kaïman main page, our e-CRM designed for Lacoste (mock-up)"><img src="../assets/ecrm-kaiman.png" alt="Kaïman main page, our e-CRM designed for Lacoste (mock-up)"><svg viewBox="0 0 1440 980" aria-hidden="true"><line x1="626.0" y1="46.0" x2="540.0" y2="46.0" stroke="#ff0000" stroke-width="4.5" stroke-linecap="round"/><polygon points="524.0,46.0 540.0,38.0 540.0,54.0" fill="#ff0000"/><circle cx="650" cy="46" r="23" fill="#0a0a0a" stroke="#fff" stroke-width="4"/><text x="650" y="55" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="26" fill="#fff">1</text><line x1="802.4" y1="174.6" x2="851.2" y2="193.5" stroke="#ff0000" stroke-width="4.5" stroke-linecap="round"/><polygon points="866.1,199.3 848.3,201.0 854.1,186.1" fill="#ff0000"/><circle cx="780" cy="166" r="23" fill="#0a0a0a" stroke="#fff" stroke-width="4"/><text x="780" y="175" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="26" fill="#fff">2</text><line x1="650.0" y1="426.0" x2="650.0" y2="494.0" stroke="#ff0000" stroke-width="4.5" stroke-linecap="round"/><polygon points="650.0,510.0 642.0,494.0 658.0,494.0" fill="#ff0000"/><circle cx="650" cy="402" r="23" fill="#0a0a0a" stroke="#fff" stroke-width="4"/><text x="650" y="411" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="26" fill="#fff">3</text><line x1="629.0" y1="739.6" x2="535.7" y2="791.3" stroke="#ff0000" stroke-width="4.5" stroke-linecap="round"/><polygon points="521.7,799.0 531.9,784.3 539.6,798.3" fill="#ff0000"/><circle cx="650" cy="728" r="23" fill="#0a0a0a" stroke="#fff" stroke-width="4"/><text x="650" y="737" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="26" fill="#fff">4</text><line x1="1258.9" y1="742.8" x2="1285.8" y2="763.9" stroke="#ff0000" stroke-width="4.5" stroke-linecap="round"/><polygon points="1298.4,773.8 1280.9,770.2 1290.8,757.6" fill="#ff0000"/><circle cx="1240" cy="728" r="23" fill="#0a0a0a" stroke="#fff" stroke-width="4"/><text x="1240" y="737" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="26" fill="#fff">5</text><line x1="123.8" y1="321.2" x2="106.4" y2="354.1" stroke="#ff0000" stroke-width="4.5" stroke-linecap="round"/><polygon points="98.9,368.2 99.3,350.3 113.5,357.8" fill="#ff0000"/><circle cx="135" cy="300" r="23" fill="#0a0a0a" stroke="#fff" stroke-width="4"/><text x="135" y="309" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="26" fill="#fff">6</text></svg></div>
       <div class="ecrm-d" data-tw="légende">
-        <div><p class="bl">What the screen shows</p><ol class="leg"><li><i>1</i><span>All our accounts linked: Instagram, TikTok, Pinterest, lacoste.com</span></li><li><i>2</i><span>Period KPIs: reach, engagement, sales</span></li><li><i>3</i><span>The TOFU → MOFU → BOFU funnel: where we lose customers</span></li><li><i>4</i><span>Our content ranked by results, with its PESO type</span></li><li><i>5</i><span>Customers to follow up, segmented and scored</span></li><li><i>6</i><span>Modules: contacts, emailing, segments, automations</span></li></ol></div>
+        <div><p class="bl">Legend</p><ol class="leg"><li><i>1</i><span>All our accounts linked: Instagram, TikTok, Pinterest, lacoste.com</span></li><li><i>2</i><span>Period KPIs: reach, engagement, sales</span></li><li><i>3</i><span>The TOFU → MOFU → BOFU funnel: shows where we lose customers</span></li><li><i>4</i><span>Our content ranked by results, with its PESO type</span></li><li><i>5</i><span>Customers to follow up, segmented and scored</span></li><li><i>6</i><span>Modules: contacts, emailing, segments, automations</span></li></ol></div>
         <div class="pm"><div class="plus"><b>Benefits</b><ul><li>The whole customer journey in one tool</li><li>Personalised follow-ups, at the right time</li><li>Every euro of the plan linked to a result</li></ul></div><div class="moins"><b>Limits</b><ul><li>Cost and set-up, hard to switch later</li><li>Data limited by networks and GDPR</li><li>Teams need training</li></ul></div></div>
+        <p class="tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r="1.2" fill="currentColor" stroke="none"/></svg><span><b>Good to know:</b> Lacoste already uses Salesforce for its customer relationship (source 15).</span></p>
       </div>
     </div>
   </div>
   <p class="pied">Sources: Igor Perez, session 9 slides (155, 156, 179); inspiration: Insyder, insyder.io (accessed 02/10/2026); mock-up and fictional data, with <img class="ia" src="../assets/logo-claude.svg" alt="">Claude.</p>
-  <div class="num">6 / 7</div>
+  <div class="num">6 / 8</div>
   <div class="zoom-ecran" title="Click to close"><img src="../assets/ecrm-kaiman.png" alt=""></div>
-  <div class="notes">Pour suivre tout ce plan, il nous faut un outil. Un e-CRM, c'est un logiciel de gestion de la relation client : il structure la donnée et il automatise une partie des tâches, comme les relances, les e-mails ou le service client. On a donc imaginé le nôtre, Kaïman, centré sur les réseaux sociaux. On s'est inspirés d'Insyder, un outil lancé en septembre par l'entrepreneur Matis Clouet, qui relie les interactions Instagram aux ventes.
-Voici sa page principale. En haut, tous nos comptes sont reliés : Instagram, TikTok, Pinterest et le site lacoste.com. Juste en dessous, les indicateurs de la période : combien de personnes on touche, le taux d'engagement, et surtout les ventes qui viennent vraiment des réseaux.
-Au milieu, le funnel TOFU, MOFU, BOFU : on voit à quelle étape on perd les clientes. En bas à gauche, nos contenus, classés par résultat avec leur type PESO : on sait ce que rapporte chaque euro du plan. À droite, les clientes à relancer en priorité, comme Claire, notre persona : elle a enregistré l'épingle et abandonné son panier, l'outil propose de lui écrire. C'est la segmentation et la personnalisation des messages qu'on a vues en cours. Et sur le côté, les autres modules : contacts, e-mailing, segments et automatisations.
-Les avantages : tout le parcours client au même endroit, des relances au bon moment, et un plan qu'on peut enfin mesurer. Les limites : un coût et une mise en place importants, et une fois qu'on a choisi un CRM, il est difficile d'en changer. Les réseaux limitent aussi les données qu'ils partagent, tout doit respecter le RGPD, et il faut former les équipes.
-Les chiffres de la maquette sont fictifs : c'est notre proposition.</div>
+</section>
+
+
+<!-- ============ STARFISH (rétrospective en 5 branches, une slide pour Romane et Sofian) ============ -->
+<section id="sstar">
+  <div class="wrap">
+    <h2 data-tw="titre">Our Starfish<span class="gris">: what this project taught us</span></h2>
+    <div class="sf" data-tw="starfish"><div class="sf-col" style="--c:#008000"><p class="sf-h"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(0 12 12)" fill="#008000"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(72 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(144 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(216 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(288 12 12)" fill="#d9d9d6"/><circle cx="12" cy="12" r="3.2" fill="#d9d9d6"/></svg>Keep doing</p><div class="post">Building the plan as TOFU / MOFU / BOFU: it helped me step back and check each post serves the persona<span class="qui">Sofian</span></div><div class="post">Starting from the persona to choose each action, not from the post idea<span class="qui">Sofian</span></div><div class="post">Being able to justify each choice: paid, owned or shared, and why<span class="qui">Sofian</span></div></div><div class="sf-col" style="--c:#1d9bf0"><p class="sf-h"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(0 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(72 12 12)" fill="#1d9bf0"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(144 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(216 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(288 12 12)" fill="#d9d9d6"/><circle cx="12" cy="12" r="3.2" fill="#d9d9d6"/></svg>Start doing</p><div class="post">Planning from day one how each piece of content will be measured<span class="qui">Sofian</span></div><div class="post">Checking the real thing (website, reviews, loyalty) before proposing<span class="qui">Sofian</span></div><div class="post">Testing a format on a small budget before investing<span class="qui">Sofian</span></div></div><div class="sf-col" style="--c:#ff0000"><p class="sf-h"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(0 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(72 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(144 12 12)" fill="#ff0000"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(216 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(288 12 12)" fill="#d9d9d6"/><circle cx="12" cy="12" r="3.2" fill="#d9d9d6"/></svg>Stop doing</p><div class="post">Choosing paid by reflex: it depends on who we want to reach<span class="qui">Sofian</span></div><div class="post">Proposing an idea without checking it doesn't already exist<span class="qui">Sofian</span></div><div class="post">Piling up ideas with no link to the problem statement<span class="qui">Sofian</span></div></div><div class="sf-col" style="--c:#f57c00"><p class="sf-h"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(0 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(72 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(144 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(216 12 12)" fill="#f57c00"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(288 12 12)" fill="#d9d9d6"/><circle cx="12" cy="12" r="3.2" fill="#d9d9d6"/></svg>More of</p><div class="post">Critical thinking with AI: review, test, redo<span class="qui">Sofian</span></div><div class="post">Content created by the community, not only by stars<span class="qui">Sofian</span></div><div class="post">Working together early, in a shared document<span class="qui">Sofian</span></div></div><div class="sf-col" style="--c:#7b3fe4"><p class="sf-h"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(0 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(72 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(144 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(216 12 12)" fill="#d9d9d6"/><ellipse cx="12" cy="6.4" rx="3.1" ry="5.6" transform="rotate(288 12 12)" fill="#7b3fe4"/><circle cx="12" cy="12" r="3.2" fill="#d9d9d6"/></svg>Less of</p><div class="post">Nice ideas with no figures: every action needs a cost and a result<span class="qui">Sofian</span></div><div class="post">Text on slides: show real examples instead<span class="qui">Sofian</span></div><div class="post">Polishing the design before the content is settled<span class="qui">Sofian</span></div></div></div>
+  </div>
+  <div class="num">7 / 8</div>
 </section>
 
 <!-- ============ S6 · ANNEXE (format du deck Rédacteur SEO) ============ -->
 <section id="s6" class="haut">
   <h2 data-tw="titre">Appendix: sources and tools used</h2>
   <div class="anx">
-    <div class="anx-c" data-tw="sources"><ol class="apa"><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, session 5 slides</i> (slides 93 to 96). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, session 6 and 7 slides</i> (slides 104, 109, 114 to 119, 130, 131, 138 to 143). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, syllabus</i> (pp. 18 and 19). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026, September 24). <i>Sessions 7 and 8</i> (content plan brief, recording). IUT de Lille.</span></li><li><span class="r">Ecommerce Nation. (2024, 2025). <i>Social media guide</i> (course appendices). ecommerce-nation.fr</span></li><li><span class="r">Da Silva, R. and Chtioui, S. (2026, September 18). <i>Lacoste social media audit</i> (2nd deliverable).</span></li><li><span class="r">Da Silva, R. (2026). <i>Persona sheet, mascot and challenge video</i> (working document).</span></li><li><span class="r">Lacoste. (2026). <i>L.12.D slim fit polo in stretch mini piqué</i> (product page). lacoste.com. 26/09/2026.</span></li><li><span class="r">Lacoste. (n.d.). <i>Lacoste Members</i> (loyalty programme). lacoste.com. 26/09/2026.</span></li><li><span class="r">Lacoste [@lacoste]. (n.d.). <i>Instagram account</i> instagram.com/lacoste. 26/09/2026.</span></li><li><span class="r">Lacoste [@lacoste]. (n.d.). <i>TikTok account</i> tiktok.com/@lacoste. 27/09/2026.</span></li><li><span class="r">Lacoste. (n.d.). <i>Pinterest profile</i> pinterest.fr/lacoste. 26/09/2026.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, session 9 slides</i> (slides 155, 156 and 179). IUT de Lille. Moodle.</span></li><li><span class="r">Clouet, M. (2026). <i>Insyder</i> (software website, inspiration for the e-CRM mock-up). insyder.io. 02/10/2026.</span></li></ol></div>
+    <div class="anx-c" data-tw="sources"><ol class="apa"><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, session 5 slides</i> (slides 93 to 96). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, session 6 and 7 slides</i> (slides 104, 109, 114 to 119, 130, 131, 138 to 143). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, syllabus</i> (pp. 18 and 19). IUT de Lille. Moodle.</span></li><li><span class="r">Perez, I. (2026, September 24). <i>Sessions 7 and 8</i> (content plan brief, recording). IUT de Lille.</span></li><li><span class="r">Ecommerce Nation. (2024, 2025). <i>Social media guide</i> (course appendices). ecommerce-nation.fr</span></li><li><span class="r">Da Silva, R. and Chtioui, S. (2026, September 18). <i>Lacoste social media audit</i> (2nd deliverable).</span></li><li><span class="r">Da Silva, R. (2026). <i>Persona sheet, mascot and challenge video</i> (working document).</span></li><li><span class="r">Lacoste. (2026). <i>L.12.D slim fit polo in stretch mini piqué</i> (product page). lacoste.com. 26/09/2026.</span></li><li><span class="r">Lacoste. (n.d.). <i>Lacoste Members</i> (loyalty programme). lacoste.com. 26/09/2026.</span></li><li><span class="r">Lacoste [@lacoste]. (n.d.). <i>Instagram account</i> instagram.com/lacoste. 26/09/2026.</span></li><li><span class="r">Lacoste [@lacoste]. (n.d.). <i>TikTok account</i> tiktok.com/@lacoste. 27/09/2026.</span></li><li><span class="r">Lacoste. (n.d.). <i>Pinterest profile</i> pinterest.fr/lacoste. 26/09/2026.</span></li><li><span class="r">Perez, I. (2026). <i>R5.MDEE.13, session 9 slides</i> (slides 155, 156 and 179). IUT de Lille. Moodle.</span></li><li><span class="r">Clouet, M. (2026). <i>Insyder</i> (software website, inspiration for the e-CRM mock-up). insyder.io. 02/10/2026.</span></li><li><span class="r">Salesforce Commerce Cloud. (n.d.). <i>Lacoste “has a Salesforce connection at every touchpoint”</i> (LinkedIn post). linkedin.com. 02/10/2026.</span></li></ol></div>
     <div class="anx-ia" data-tw="IA et outils"><h3>AI, with hindsight</h3><div><div class="qui"><img src="../assets/logo-claude.svg" alt="">What Claude did</div><ul><li>Designed the slides</li><li>Suggested a few action ideas</li></ul></div><div><div class="qui"><img src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5 (Romane)</div><ul><li>Mascot, persona, challenge visual</li></ul></div><div><div class="qui"><img src="../assets/logo-gemini.svg" alt="">Gemini</div><ul><li>Video generation</li></ul></div></div>
   </div>
   <p class="pied" data-tw="mention">Romane Da Silva &amp; Sofian Chtioui · BUT3 MDEE · IUT de Roubaix · 1 October 2026</p>
-  <div class="num">7 / 7</div>
-  <div class="notes">Toutes nos sources sont ici, ainsi que la façon dont on a utilisé l'IA.
-Merci de nous avoir écoutés, on est prêts pour vos questions.</div>
+  <div class="num">8 / 8</div>
 </section>
 
 <script>
