@@ -440,6 +440,15 @@ body.reglage .panneau{display:block}
   [data-tw]{outline:0!important}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+
+/* indication du son sur la vidéo du défi TikTok, la seule qui a une bande son (02/10) */
+.son-tip{position:absolute;left:50%;top:13%;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:.45em;white-space:nowrap;
+  background:rgba(10,10,10,.78);color:#fff;font-size:var(--fs-sm);font-weight:700;padding:.55em .95em;border-radius:999px;pointer-events:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.3);animation:son-pulse 1.8s ease-in-out infinite;transition:opacity .25s}
+.son-tip svg{width:1.25em;height:1.25em;flex:none}
+@keyframes son-pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.06)}}
+.fr.son-on .son-tip{opacity:0}
+@media print{.son-tip{display:none!important}}
 </style>
 </head>
 <body>
@@ -565,7 +574,7 @@ body.reglage .panneau{display:block}
           </tbody>
         </table>
       </div>
-      <div class="ex car" data-tw="exemple"><div class="car-track"><figure class="car-it"><div class="fr" style="--ar:390/844"><video class="clip" src="../assets/mq-mofu-carrousel.mp4" poster="../assets/mq-mofu-carrousel-poster.png" muted loop autoplay playsinline preload="auto"></video><span class="chip">“From cotton to crocodile” carousel</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><video class="clip" src="../assets/mq-mofu-tiktok.mp4" poster="../assets/mq-mofu-tiktok-poster.jpg" muted loop autoplay playsinline preload="auto"></video><span class="chip">#CrocodileVibes challenge</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><img src="../assets/mq-mofu-pub.png" alt=""><span class="chip">“Add to cart” ad</span></div></figure></div><p class="car-cap"></p><div class="car-nav"><button class="fleche car-p" aria-label="Previous"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M21 10l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="car-dots"></span><button class="fleche car-n" aria-label="Next"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M15 10l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+      <div class="ex car" data-tw="exemple"><div class="car-track"><figure class="car-it"><div class="fr" style="--ar:390/844"><video class="clip" src="../assets/mq-mofu-carrousel.mp4" poster="../assets/mq-mofu-carrousel-poster.png" muted loop autoplay playsinline preload="auto"></video><span class="chip">“From cotton to crocodile” carousel</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><video class="clip" src="../assets/mq-mofu-tiktok.mp4" poster="../assets/mq-mofu-tiktok-poster.jpg" muted loop autoplay playsinline preload="auto"></video><span class="son-tip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Click to hear the sound</span><span class="chip">#CrocodileVibes challenge</span></div></figure><figure class="car-it"><div class="fr" style="--ar:390/844"><img src="../assets/mq-mofu-pub.png" alt=""><span class="chip">“Add to cart” ad</span></div></figure></div><p class="car-cap"></p><div class="car-nav"><button class="fleche car-p" aria-label="Previous"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M21 10l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="car-dots"></span><button class="fleche car-n" aria-label="Next"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M15 10l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
     </div>
   </div>
   <p class="pied">Sources: Igor Perez, session 5 slide (95), session 6 and 7 slides (119, 131, 142, 143); visuals: Romane Da Silva with <img class="ia" src="../assets/logo-chatgpt.svg" alt="">GPT Image 2.5, and <img class="ia" src="../assets/logo-gemini.svg" alt="">Gemini.</p>
@@ -679,6 +688,7 @@ document.querySelectorAll('.ex.car').forEach(c=>{
 
 /* ---------- un clic sur une vidéo du carrousel active ou coupe le son ---------- */
 document.querySelectorAll('.car-it video').forEach(v=>v.closest('.fr').addEventListener('click',()=>{ if(document.body.classList.contains('reglage')) return; v.muted=!v.muted; if(!v.muted){ v.currentTime=0; v.play().catch(()=>{}); } }));
+document.querySelectorAll('.car-it video').forEach(v=>v.addEventListener('volumechange',()=>v.closest('.fr').classList.toggle('son-on',!v.muted)));
 
 
 /* ---------- e-CRM : un clic sur l'écran l'agrandit, un clic referme ---------- */
